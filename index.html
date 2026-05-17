@@ -1,48 +1,828 @@
-<!-- Topic 11.4 — Practice Scenario — MKTG1092 Product Innovation and Management -->
-<!-- Canvas HTML fragment — do not include DOCTYPE, html, head, or body tags -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Scenario — Week 11 | MKTG1092</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
 
-<h2 style="color: #ba372a; font-size: 28pt; margin-top: 50px; margin-bottom: 14px;">Topic 11.4: Practice Scenario</h2>
-<p style="color: #2c3e50; margin-top: 0;">A short branching exercise that puts you in the role of a Product Innovation Manager making real-time investment decisions &mdash; the same format you will encounter in Assessment 3</p>
+  :root {
+    --red:#ba372a; --red-light:#f5ece9;
+    --ink:#1a1614; --ink-mid:#3d2e2a; --ink-light:#7a6a65;
+    --cream:#faf7f4; --cream-dark:#f0ebe4; --border:#ddd4cc;
+    --purple:#4a2a7a; --purple-light:#f0ecf9;
+    --warning:#a8551a;
+  }
 
-<!-- What this is -->
-<div style="background: #f6f6f6; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px;">
-  <p style="margin-top: 0;"><strong>What this practice scenario is.</strong> The exercise below puts you in the role of a Product Innovation Manager who must make a sequence of investment decisions under time pressure. Each decision opens a different next decision, and the path you take depends on how you read the evidence in front of you. There is no single right answer &mdash; the discipline is the same one you have been building all week, applied at speed.</p>
-  <p style="margin-bottom: 0;"><strong>Why you are doing it now.</strong> Assessment 3 includes a similar branching exercise as part of the brief that releases on the Friday of Week 12. The exercise on this page is your low-stakes opportunity to experience the format, see how the timer works, and feel where the discipline of the translation move and the three claims becomes most useful. Nothing on this page is assessed.</p>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Source Sans 3',Georgia,sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; }
+
+  .masthead { width:100%; background:var(--purple); padding:12px 40px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:10; }
+  .masthead-title { font-size:12px; font-weight:600; color:rgba(255,255,255,0.9); letter-spacing:0.08em; text-transform:uppercase; }
+  .masthead-right { display:flex; align-items:center; gap:14px; }
+  .masthead-badge { background:rgba(255,255,255,0.2); color:#fff; font-size:10px; padding:3px 10px; border-radius:20px; font-weight:600; letter-spacing:0.06em; }
+
+  .timer-display { background:rgba(255,255,255,0.15); color:#fff; font-size:14px; font-weight:700; padding:6px 14px; border-radius:20px; font-variant-numeric:tabular-nums; letter-spacing:0.04em; display:none; align-items:center; gap:8px; }
+  .timer-display.active { display:flex; }
+  .timer-display.warning { background:#d97706; }
+  .timer-display.critical { background:var(--red); animation:pulseTimer 0.8s ease-in-out infinite; }
+  @keyframes pulseTimer { 0%,100%{opacity:1} 50%{opacity:0.7} }
+  .timer-icon { font-size:14px; }
+
+  .container { max-width:760px; margin:0 auto; padding:36px 40px 80px; }
+
+  .practice-banner { background:var(--purple); color:#fff; border-radius:10px; padding:16px 22px; margin-bottom:28px; display:flex; align-items:center; gap:14px; }
+  .practice-banner-icon { font-size:26px; }
+  .practice-banner-text { font-size:13.5px; line-height:1.55; }
+  .practice-banner-text strong { font-size:14px; display:block; margin-bottom:3px; }
+
+  .passage { display:none; animation:fadeIn 0.4s ease; }
+  .passage.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+  .doc-header { border-top:3px solid var(--purple); padding-top:18px; margin-bottom:22px; }
+  .doc-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:7px; }
+  .doc-title { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--ink); line-height:1.25; margin-bottom:5px; }
+  .doc-meta { font-size:12px; color:var(--ink-light); font-style:italic; }
+
+  .body-text { font-size:15px; line-height:1.78; color:var(--ink-mid); margin-bottom:14px; }
+  .memo { background:var(--cream-dark); border-left:4px solid var(--purple); border-radius:0 8px 8px 0; padding:14px 18px; margin:18px 0; font-size:13.5px; color:var(--ink-mid); line-height:1.65; }
+  .memo strong { color:var(--purple); }
+  .callout { background:#fff; border:1px solid var(--border); border-radius:8px; padding:16px 20px; margin:18px 0; font-size:14px; line-height:1.65; color:var(--ink); }
+  .callout-title { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:8px; }
+  .callout-quote { font-style:italic; color:var(--ink-mid); }
+
+  .numbers-box { background:var(--purple-light); border:1px solid #c9bce6; border-radius:8px; padding:16px 20px; margin:18px 0; }
+  .numbers-title { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+  .numbers-row { display:flex; gap:20px; flex-wrap:wrap; }
+  .numbers-item { flex:1; min-width:160px; }
+  .numbers-label { font-size:11px; color:var(--ink-light); margin-bottom:3px; }
+  .numbers-value { font-size:18px; font-weight:700; color:var(--purple); }
+  .numbers-context { font-size:11px; color:var(--ink-light); font-style:italic; }
+
+  .decision-prompt { margin:24px 0 18px; padding:18px 22px; background:var(--purple); border-radius:8px; color:#fff; }
+  .decision-prompt-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:7px; }
+  .decision-prompt-text { font-family:'Playfair Display',serif; font-size:17px; font-weight:600; line-height:1.4; color:#fff; }
+
+  .choices { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+  .choice-btn { background:#fff; border:2px solid var(--border); border-radius:8px; padding:14px 18px; text-align:left; cursor:pointer; transition:all 0.2s; font-family:'Source Sans 3',sans-serif; }
+  .choice-btn:hover { border-color:var(--purple); background:var(--purple-light); transform:translateX(3px); }
+  .choice-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+  .choice-number { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--purple); margin-bottom:3px; }
+  .choice-text { font-size:14px; font-weight:600; color:var(--ink); line-height:1.4; margin-bottom:3px; }
+  .choice-sub { font-size:12.5px; color:var(--ink-light); line-height:1.45; font-style:italic; }
+
+  .consequence { background:#fff; border:1px solid var(--border); border-top:3px solid var(--purple); border-radius:0 0 8px 8px; padding:16px 20px; margin:18px 0; }
+  .consequence-label { font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple); margin-bottom:8px; }
+  .consequence.timeout { border-top-color:var(--red); }
+  .consequence.timeout .consequence-label { color:var(--red); }
+
+  .btn-primary { display:inline-block; background:var(--purple); color:#fff; border:none; border-radius:8px; padding:13px 26px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s; text-decoration:none; }
+  .btn-primary:hover { background:#3a1f62; }
+
+  .btn-secondary { display:inline-block; background:#fff; color:var(--purple); border:2px solid var(--purple); border-radius:8px; padding:11px 24px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+  .btn-secondary:hover { background:var(--purple-light); }
+
+  .divider { height:1px; background:var(--border); margin:22px 0; }
+
+  .welcome-hero { text-align:center; padding:32px 0 24px; border-bottom:1px solid var(--border); margin-bottom:28px; }
+  .welcome-logo { width:44px; height:44px; background:var(--purple); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:20px; color:#fff; }
+  .welcome-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+  .welcome-sub { font-size:14px; color:var(--ink-light); font-style:italic; }
+
+  .instructions-list { background:#fff; border:1px solid var(--border); border-radius:8px; padding:20px 24px; margin:18px 0; }
+  .instructions-list h4 { font-family:'Playfair Display',serif; font-size:16px; color:var(--ink); margin-bottom:12px; }
+  .instructions-list ol { padding-left:22px; }
+  .instructions-list li { font-size:14px; line-height:1.7; color:var(--ink-mid); margin-bottom:8px; }
+  .instructions-list li strong { color:var(--ink); }
+
+  .progress-bar { display:flex; gap:6px; margin-bottom:20px; }
+  .progress-dot { flex:1; height:6px; background:var(--border); border-radius:3px; }
+  .progress-dot.complete { background:var(--purple); }
+  .progress-dot.active { background:var(--purple); }
+
+  .final-note { background:#fff; border:1px solid var(--border); border-radius:8px; padding:20px 24px; margin-top:24px; }
+  .final-note-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--ink); margin-bottom:10px; }
+
+  .choices-record { background:var(--cream-dark); border-radius:8px; padding:16px 20px; margin:18px 0; font-size:13px; }
+  .choices-record-title { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+  .choices-record-row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border); }
+  .choices-record-row:last-child { border-bottom:none; }
+  .choices-record-label { color:var(--ink-light); }
+  .choices-record-value { font-weight:600; color:var(--ink); }
+
+  .name-input { width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:6px; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--ink); margin-top:6px; }
+  .name-input:focus { outline:none; border-color:var(--purple); }
+
+  @media(max-width:600px){ .container{padding:20px 18px 50px;} .masthead{padding:10px 18px; flex-direction:column; gap:8px; align-items:flex-start;} .numbers-row{flex-direction:column;} }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-title">MKTG1092 &nbsp;·&nbsp; Week 11 &nbsp;·&nbsp; Practice Scenario</span>
+  <div class="masthead-right">
+    <div class="timer-display" id="timer-display"><span class="timer-icon">&#9201;</span><span id="timer-value">1:30</span></div>
+    <span class="masthead-badge">Practice only &mdash; not assessed</span>
+  </div>
 </div>
 
-<!-- How to use it -->
-<h3 style="color: #ba372a; margin-top: 28px; margin-bottom: 10px;">How to use this practice scenario</h3>
+<div class="container">
 
-<ol style="margin-bottom: 22px;">
-  <li style="margin-bottom: 8px;"><strong>Have your three claims open.</strong> The drafted segment, scale, and key risk claims from Tutorial 11.3 are your reference material. The practice scenario will not test you on your specific concept, but the disciplines are the same.</li>
-  <li style="margin-bottom: 8px;"><strong>Read every decision page before you choose.</strong> The timer per decision is short. Reading first, deciding second is faster than reading and deciding together &mdash; the same is true in the assessed scenario.</li>
-  <li style="margin-bottom: 8px;"><strong>Notice where you hesitate.</strong> The moments where you are unsure are diagnostic. They tell you which of the three claims is least sharp in your own thinking. Make a note of these moments &mdash; they are where the most useful sharpening work for Week 12 will happen.</li>
-  <li style="margin-bottom: 0;"><strong>Run the exercise more than once if you have time.</strong> Different paths will surface different reasoning. You will see different evidence in each path and your own decision pattern will become visible.</li>
-</ol>
+  <!-- ══════════════════════════════════ INSTRUCTIONS -->
+  <div class="passage active" id="p-instructions">
 
-<!-- The embedded practice scenario -->
-<div style="background: #f7fbff; border: 1px solid #cfe3f6; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px;">
-  <p style="margin-top: 0;"><strong>Practice Scenario &mdash; open below.</strong> Allow approximately 15 to 20 minutes for one full run. If the exercise does not load inside the page, open it directly at <a href="https://rmit-mktg1092.github.io/week11-practice-scenario/" target="_blank" rel="noopener" style="color: #ba372a;">rmit-mktg1092.github.io/week11-practice-scenario/</a>.</p>
+    <div class="practice-banner">
+      <div class="practice-banner-icon">&#128202;</div>
+      <div class="practice-banner-text">
+        <strong>This is a practice scenario &mdash; it is not assessed.</strong>
+        It uses the same format as the Assessment 3 scenario that releases in Week 12. The point is to feel the time pressure, the trade-offs, and the export process before any of it matters for your grade.
+      </div>
+    </div>
+
+    <div class="welcome-hero">
+      <div class="welcome-logo">&#9670;</div>
+      <h1 class="welcome-title">The Investment Committee</h1>
+      <p class="welcome-sub">A practice branching scenario &nbsp;&middot;&nbsp; Three decisions &nbsp;&middot;&nbsp; Ninety seconds each</p>
+    </div>
+
+    <p class="body-text">You are a Product Innovation Manager presenting to an Investment Committee that will decide whether to fund your concept. Across three decision points you will defend the three claims of your business case under pressure &mdash; your target segment claim, your scale claim, and your key risk claim. Each decision arrives with a senior stakeholder pushing back on your reasoning. None of the options is obviously right.</p>
+
+    <p class="body-text">In the real Assessment 3 scenario, the decisions will be tailored to your group&rsquo;s concept and your segment. The practice scenario uses a generic concept so every student can run it. The disciplines being practised are the same.</p>
+
+    <div class="instructions-list">
+      <h4>How this scenario works</h4>
+      <ol>
+        <li><strong>Three decision points.</strong> Each one tests one of the three business case claims you learned about this week. The challenges are deliberately demanding &mdash; this is what investment-committee pressure feels like.</li>
+        <li><strong>Ninety seconds per decision.</strong> A countdown timer runs at the top of the screen. When time runs out, the committee makes the decision for you &mdash; and you see what that costs. This mirrors the assessed scenario exactly.</li>
+        <li><strong>Read the brief, then choose.</strong> The fastest readers do not necessarily make the best decisions. Speed reading every sentence is slower than reading carefully and choosing once.</li>
+        <li><strong>Every choice has consequences.</strong> There is no "correct" path. Each option opens a different consequence that reveals what that choice reveals about your reasoning.</li>
+        <li><strong>Export your record at the end.</strong> You will receive a Word document with your three choices, the consequences, and reflection prompts to use as preparation for Assessment 3. Save it to your Assessment 3 working folder.</li>
+        <li><strong>Run it more than once.</strong> Different paths surface different reasoning. The most useful learning often comes on the second or third run.</li>
+      </ol>
+    </div>
+
+    <div class="memo">
+      <strong>Before you begin.</strong> Have your three drafted claims from Tutorial 11.3 open beside you &mdash; segment, scale, and key risk. The practice scenario will not test your specific concept, but the disciplines you bring from your own claims will carry across.
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Your name (optional)</div>
+      <p style="font-size:13px;color:var(--ink-mid);margin-bottom:0;">Enter your name or student number to personalise your exported record. This is stored only in your browser and never transmitted.</p>
+      <input type="text" class="name-input" id="student-name" placeholder="e.g. s1234567 or your first name" />
+    </div>
+
+    <div style="margin-top:24px;">
+      <button class="btn-primary" onclick="startScenario()">I have read the instructions &mdash; begin the scenario &rarr;</button>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════ DECISION 1 — SEGMENT CLAIM -->
+  <div class="passage" id="p-d1">
+
+    <div class="progress-bar">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="doc-header">
+      <div class="doc-label">Decision Point 1 of 3 &nbsp;&middot;&nbsp; The Segment Claim</div>
+      <h2 class="doc-title">The Head of Buying at the Major Grocer Has Read Your Brief</h2>
+      <p class="doc-meta">Investment Committee meeting &mdash; 14:32 &nbsp;&middot;&nbsp; Boardroom B</p>
+    </div>
+
+    <p class="body-text">You have presented the segment claim that anchors your business case. The Head of Buying from the major grocery retailer, who sits as an external observer on the Investment Committee, has been quiet through the first ten minutes. He now raises his hand.</p>
+
+    <div class="callout">
+      <div class="callout-title">Head of Buying &mdash; verbatim</div>
+      <p class="callout-quote">"You have defined your target segment as 720,000 households &mdash; the multi-person homes who have switched to concentrated detergent in the last three years. That is a sharp definition. I respect it. But it is also the reason I cannot give you national shelf space. We do not list products that address less than two million households. So either your segment definition is wrong &mdash; and you are leaving households on the table &mdash; or your scale ambition is wrong, because a 720,000-household segment cannot support a national grocery launch. Tell me which it is. Because both cannot stand."</p>
+    </div>
+
+    <div class="numbers-box">
+      <div class="numbers-title">What is in front of you</div>
+      <div class="numbers-row">
+        <div class="numbers-item">
+          <div class="numbers-label">Your segment claim</div>
+          <div class="numbers-value">720,000</div>
+          <div class="numbers-context">multi-person homes, recent switchers</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Retailer minimum threshold</div>
+          <div class="numbers-value">2 million</div>
+          <div class="numbers-context">households for national listing</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Adjacent untargeted segment</div>
+          <div class="numbers-value">~1.4 million</div>
+          <div class="numbers-context">single-person concentrated buyers</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Specialty channel reach</div>
+          <div class="numbers-value">~280,000</div>
+          <div class="numbers-context">via independent and online routes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="decision-prompt">
+      <div class="decision-prompt-label">Your decision &mdash; 90 seconds</div>
+      <div class="decision-prompt-text">The Head of Buying expects a clear answer. The committee is watching. What do you say?</div>
+    </div>
+
+    <div class="choices" id="d1-choices">
+      <button class="choice-btn" onclick="choose(1,'A')">
+        <div class="choice-number">Option A &mdash; Defend the segment, change the channel strategy</div>
+        <div class="choice-text">Hold the segment definition. Argue the national grocery channel is the wrong route to market for a product engineered around this specific tension. Propose a specialty and online-first launch.</div>
+        <div class="choice-sub">You are protecting the integrity of the segment claim by changing what scale looks like. The premium positioning survives. The trade-off is launch velocity &mdash; you give up national shelf space for the sake of evidence-based segmentation.</div>
+      </button>
+      <button class="choice-btn" onclick="choose(1,'B')">
+        <div class="choice-number">Option B &mdash; Widen the segment to meet the retailer&rsquo;s threshold</div>
+        <div class="choice-text">Acknowledge the segment was drawn too tightly. Add the adjacent 1.4 million single-person concentrated buyers to the segment definition. Total addressable now exceeds the retailer threshold.</div>
+        <div class="choice-sub">You are protecting launch velocity. The segment claim weakens because the new boundary is not built on a single tension &mdash; it is built on retailer arithmetic. The premium positioning is now harder to defend because the wider segment has different willingness to pay.</div>
+      </button>
+      <button class="choice-btn" onclick="choose(1,'C')">
+        <div class="choice-number">Option C &mdash; Decline to choose and propose to bring evidence back next meeting</div>
+        <div class="choice-text">State that you will not pick between segment integrity and channel strategy in this room without underlying data. Propose a four-week deep dive on the adjacent segment to test whether it is genuinely served by the same product.</div>
+        <div class="choice-sub">You are protecting analytical rigour at the cost of momentum. The committee will respect the discipline or read it as hesitation &mdash; you cannot tell from here. The four weeks may also close the launch window.</div>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- D1 Consequences -->
+  <div class="passage" id="p-d1a">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 1</div>
+      <h2 class="doc-title">A Channel-First Defence</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">You hold the segment. The Head of Buying nods slowly. The CFO writes something down. Two committee members look at each other. The chair speaks: "So you are telling us the segment claim is correct and the original channel plan was wrong. That is a meaningful concession. Walk us through the specialty-first economics &mdash; because if the unit economics do not work without the grocery channel, you have just removed your scale claim by accident."</p>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);margin-top:10px;">You have protected one claim by exposing another. The committee will now press on the scale claim &mdash; harder than they would have if you had not made this trade. This is the cost of analytical honesty inside a room that wants a clean story.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d1b">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 1</div>
+      <h2 class="doc-title">A Wider Segment, A Weaker Story</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The Head of Buying is satisfied. The chair is satisfied. The Marketing Director, who has been quiet, leans forward: "Just to be clear &mdash; your original segment was the multi-person household experiencing a specific storage tension. The 1.4 million single-person buyers do not have that tension. They live alone. They have storage. So what is the tension that the wider segment is paying a premium to resolve? Because the premium pricing in your business case assumed the storage tension was doing the work."</p>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);margin-top:10px;">You have just bought scale at the cost of segment specificity. The premium pricing claim that anchored your scale claim is no longer connected to a real tension for half your new segment. Decision 2 is going to be uncomfortable.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d1c">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 1</div>
+      <h2 class="doc-title">A Four-Week Pause</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The committee pauses. The chair confers briefly with the CFO. "We can grant four weeks. But we cannot grant four weeks of paralysis. So while you are running the deep dive, we want you to come back in two weeks with a working hypothesis about the adjacent segment, and in four weeks with the evidence to confirm or reject it. If you cannot confirm by week four, we close this round of funding."</p>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);margin-top:10px;">You have bought analytical time at the cost of commercial momentum. The launch window has tightened. The committee will now ask the scale question with even less patience &mdash; they want to see that you are not delaying every decision to the same standard.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d1-timeout">
+    <div class="doc-header">
+      <div class="doc-label">Time elapsed &nbsp;&middot;&nbsp; Decision 1</div>
+      <h2 class="doc-title">The Committee Filled the Silence</h2>
+    </div>
+    <div class="consequence timeout">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">Ninety seconds passed. You did not speak. The Head of Buying glanced at the chair. The chair filled the silence: "Let us return to that question after the next agenda item." It is the most polite way of saying the segment claim has just been registered as something you cannot defend in the room. The committee will return to it &mdash; but with less weight on your answer when you do give one.</p>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);margin-top:10px;">In Assessment 3, a timeout is not a neutral outcome. The scenario records that you did not commit, and the next decision arrives with the previous question still open. This is what under-preparation feels like in an investment committee.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
+  </div>
+
+  <!-- ══════════════════════════════════ DECISION 2 — SCALE CLAIM -->
+  <div class="passage" id="p-d2">
+
+    <div class="progress-bar">
+      <div class="progress-dot complete"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="doc-header">
+      <div class="doc-label">Decision Point 2 of 3 &nbsp;&middot;&nbsp; The Scale Claim</div>
+      <h2 class="doc-title">The CFO Has Run the Numbers Independently</h2>
+      <p class="doc-meta">Investment Committee meeting &mdash; 14:48 &nbsp;&middot;&nbsp; Boardroom B</p>
+    </div>
+
+    <p class="body-text">The CFO has been listening. She has a Euromonitor printout in her hand. She slides it across the table.</p>
+
+    <div class="callout">
+      <div class="callout-title">CFO &mdash; verbatim</div>
+      <p class="callout-quote">"Your scale claim assumes a 2 per cent share of the reachable segment in 18 months. The category is growing at 4 per cent annually &mdash; this is the published Euromonitor number, not yours. Here is what is on my mind. Category growth at 4 per cent absorbs roughly 1.2 per cent of the share you are claiming. The remaining 0.8 per cent has to come from incumbents. The incumbents in this category are Unilever and Procter and Gamble. So what you are actually telling this committee is that we are going to take 0.8 per cent of incumbent share from two of the largest consumer goods companies on earth, in 18 months, with our first product. I want to know: what makes you believe that?"</p>
+    </div>
+
+    <div class="numbers-box">
+      <div class="numbers-title">What the CFO is putting on the table</div>
+      <div class="numbers-row">
+        <div class="numbers-item">
+          <div class="numbers-label">Your share claim</div>
+          <div class="numbers-value">2.0%</div>
+          <div class="numbers-context">in first 18 months</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Absorbed by category growth</div>
+          <div class="numbers-value">1.2%</div>
+          <div class="numbers-context">Euromonitor 2025 category growth</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Required incumbent-share take</div>
+          <div class="numbers-value">0.8%</div>
+          <div class="numbers-context">from Unilever / P&amp;G combined</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Closest peer launch (last 5 years)</div>
+          <div class="numbers-value">0.3%</div>
+          <div class="numbers-context">incumbent-share take in 18 months</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="memo">
+      <strong>Notice what the CFO is doing.</strong> She is not contesting your evidence. She is testing whether your claim is internally consistent with the category economics. A share claim that requires an unrealistic incumbent-share take is not a scale claim &mdash; it is a hope.
+    </div>
+
+    <div class="decision-prompt">
+      <div class="decision-prompt-label">Your decision &mdash; 90 seconds</div>
+      <div class="decision-prompt-text">Three viable answers. Each one tells the committee something different about how you read evidence.</div>
+    </div>
+
+    <div class="choices" id="d2-choices">
+      <button class="choice-btn" onclick="choose(2,'A')">
+        <div class="choice-number">Option A &mdash; Defend the 2 per cent on differentiation grounds</div>
+        <div class="choice-text">Argue that the closest peer launch lacked the structural innovation your concept has. The 0.8 per cent incumbent take is defensible because your differentiation is not incremental &mdash; it is a category step-change.</div>
+        <div class="choice-sub">You are betting the differentiation argument is stronger than the peer-launch evidence. The committee will weigh whether the differentiation claim is strong enough to overcome a five-year evidence pattern. The CFO may not agree.</div>
+      </button>
+      <button class="choice-btn" onclick="choose(2,'B')">
+        <div class="choice-number">Option B &mdash; Revise the share claim to 1.2 per cent on category growth alone</div>
+        <div class="choice-text">Accept the CFO&rsquo;s framing. Revise the share claim down to what category growth alone supports. Acknowledge that incumbent-share take is a Year 2 question, not a Year 1 question.</div>
+        <div class="choice-sub">You are protecting credibility by removing the most contested half of the claim. The trade-off is payback &mdash; the revised number does not recover the dispenser tooling investment inside the original 24-month window. The investment case may no longer pass.</div>
+      </button>
+      <button class="choice-btn" onclick="choose(2,'C')">
+        <div class="choice-number">Option C &mdash; Reframe the scale claim as 2 per cent of a narrower subsegment</div>
+        <div class="choice-text">Argue the 2 per cent is real, but only against the addressable subsegment &mdash; concentrated-switching multi-person households who have already shown premium willingness to pay. The denominator changes; the share claim sharpens.</div>
+        <div class="choice-sub">You are protecting the share number by redefining what it is a share of. The committee will test whether the subsegment is large enough to recover the investment. If it is, you have made the claim sharper. If it is not, you have just talked your own scale claim down.</div>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- D2 Consequences -->
+  <div class="passage" id="p-d2a">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 2</div>
+      <h2 class="doc-title">Differentiation Versus Evidence</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The CFO does not push back immediately. She notes the differentiation argument and reserves judgement. The chair speaks: "We will accept the 2 per cent claim conditionally, contingent on the differentiation holding up under consumer testing in the first six months. If the test data does not show a structural difference, we will revisit the share claim before Year 2 budget is committed." Your scale claim survives intact but the burden of proof has shifted forward into the post-launch period.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d3')" style="margin-top:16px;">Continue to Decision 3 &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d2b">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 2</div>
+      <h2 class="doc-title">A Smaller, Honester Number</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The CFO appreciates the concession. The chair does not. "If the revised number does not recover the tooling investment inside 24 months, you have not improved the business case &mdash; you have replaced an aspirational case with a non-viable case. Either find tooling savings, push payback to 30 months and tell us why that is acceptable, or restore some version of the incumbent-share argument with better evidence." You have protected analytical honesty at the cost of the investment thesis. Decision 3 arrives with the case wobbling.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d3')" style="margin-top:16px;">Continue to Decision 3 &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d2c">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 2</div>
+      <h2 class="doc-title">A Sharper Denominator</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The CFO leans back. "That is a sharper claim than what you started with. But you have just made the subsegment carry the entire investment case. Tell me what happens if the subsegment turns out to be 30 per cent smaller than you have estimated &mdash; because the published data on subsegment-level willingness to pay is thinner than the category-level data. I am not arguing the subsegment is wrong. I am arguing the confidence interval around it is wider than you are showing." The committee accepts the reframe but asks for sensitivity analysis before sign-off.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d3')" style="margin-top:16px;">Continue to Decision 3 &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d2-timeout">
+    <div class="doc-header">
+      <div class="doc-label">Time elapsed &nbsp;&middot;&nbsp; Decision 2</div>
+      <h2 class="doc-title">A Number Without a Defence</h2>
+    </div>
+    <div class="consequence timeout">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The 90 seconds elapsed in silence. The CFO leaves the Euromonitor printout on the table and turns to the chair. "We can come back to it." The committee moves on. Your scale claim is now in the room as an unanswered question. Decision 3 arrives with two open questions sitting behind it. This is what compounding under-preparation looks like.</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('p-d3')" style="margin-top:16px;">Continue to Decision 3 &rarr;</button>
+  </div>
+
+  <!-- ══════════════════════════════════ DECISION 3 — KEY RISK CLAIM -->
+  <div class="passage" id="p-d3">
+
+    <div class="progress-bar">
+      <div class="progress-dot complete"></div>
+      <div class="progress-dot complete"></div>
+      <div class="progress-dot active"></div>
+    </div>
+
+    <div class="doc-header">
+      <div class="doc-label">Decision Point 3 of 3 &nbsp;&middot;&nbsp; The Key Risk Claim</div>
+      <h2 class="doc-title">The General Counsel Has Just Joined</h2>
+      <p class="doc-meta">Investment Committee meeting &mdash; 15:04 &nbsp;&middot;&nbsp; Boardroom B</p>
+    </div>
+
+    <p class="body-text">The General Counsel was not on the original agenda. The chair invited her in fifteen minutes ago after the segment and scale discussion ran long. She has read your risk register on the way down. She speaks before she sits.</p>
+
+    <div class="callout">
+      <div class="callout-title">General Counsel &mdash; verbatim</div>
+      <p class="callout-quote">"I will be direct. Your business case names the strongest marketing claim &mdash; the differentiated sustainability positioning &mdash; as the source of your premium price. Your risk register names that same claim as exposed to ACCC enforcement because the comparative evidence is not yet complete. So you have written a business case that depends, for its return, on a claim you cannot currently defend, which you have also told this committee about in writing. I respect the transparency. But I need to know what you propose we do about it &mdash; today &mdash; because the moment this paper leaves this room, the disclosed risk becomes a matter of record. Walk me through it."</p>
+    </div>
+
+    <div class="numbers-box">
+      <div class="numbers-title">What is at stake</div>
+      <div class="numbers-row">
+        <div class="numbers-item">
+          <div class="numbers-label">Premium that depends on the claim</div>
+          <div class="numbers-value">15-20%</div>
+          <div class="numbers-context">price premium over standard format</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Evidence gap to close</div>
+          <div class="numbers-value">6 months</div>
+          <div class="numbers-context">packaging audit and lifecycle data</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Launch window before competitor</div>
+          <div class="numbers-value">4 months</div>
+          <div class="numbers-context">credible competitor in development</div>
+        </div>
+        <div class="numbers-item">
+          <div class="numbers-label">Max ACCC penalty (recent precedent)</div>
+          <div class="numbers-value">$10m</div>
+          <div class="numbers-context">per contravention, environmental claims</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="memo">
+      <strong>This is the hardest decision in the scenario.</strong> The launch window is four months. The evidence to fully defend the claim takes six months. You cannot have both. The General Counsel is asking you to choose between commercial momentum, commercial integrity, and commercial timing &mdash; and she will hold you to whatever you say.
+    </div>
+
+    <div class="decision-prompt">
+      <div class="decision-prompt-label">Your decision &mdash; 90 seconds</div>
+      <div class="decision-prompt-text">Three paths. Each one accepts a different cost. None of them is free.</div>
+    </div>
+
+    <div class="choices" id="d3-choices">
+      <button class="choice-btn" onclick="choose(3,'A')">
+        <div class="choice-number">Option A &mdash; Delay launch by two months to close the evidence gap</div>
+        <div class="choice-text">Recommend the committee delay launch by two months. Accept that the competitor may reach market first. Argue that an indefensible lead claim is a worse commercial position than a defensible second-mover claim.</div>
+        <div class="choice-sub">You are protecting the brand and the marketing claim at the cost of first-mover advantage. The competitor may absorb the segment&rsquo;s sustainability-led buyers in the two months you have ceded. The financial cost of this trade has not been modelled.</div>
+      </button>
+      <button class="choice-btn" onclick="choose(3,'B')">
+        <div class="choice-number">Option B &mdash; Launch on time with a softened claim that the existing evidence supports</div>
+        <div class="choice-text">Replace the lead "less plastic waste than your current detergent" claim with a narrower defensible claim &mdash; for example, "less plastic in the bottle than a standard 2-litre format". Accept the 5 to 7 percentage point premium erosion.</div>
+        <div class="choice-sub">You are protecting the launch window and the brand at the cost of the premium. The investment case still works at the lower premium but the payback horizon stretches. The scale claim from Decision 2 may now require revisiting.</div>
+      </button>
+      <button class="choice-btn" onclick="choose(3,'C')">
+        <div class="choice-number">Option C &mdash; Launch on time with the original claim and a commissioned audit running in parallel</div>
+        <div class="choice-text">Argue that the claim is defensible on existing internal data even if the formal audit is not complete. Commission the full audit to run in parallel with the launch. Accept the regulatory exposure for the first two months.</div>
+        <div class="choice-sub">You are protecting the launch window, the premium, and first-mover advantage by accepting a window of regulatory exposure. The General Counsel will not co-sign this recommendation. If the ACCC moves, this is the option that costs the most.</div>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- D3 Consequences -->
+  <div class="passage" id="p-d3a">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 3</div>
+      <h2 class="doc-title">Defensible But Second</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The General Counsel agrees. The CFO is uneasy &mdash; she has not seen the financial cost of the delay modelled. The chair calls the decision: launch is delayed by two months, the audit completes in time to support the lead claim at launch. The committee approves the development budget conditionally on the delayed timing. The competitor reaches market first, takes approximately 22 per cent of the early adopter segment, and is forced to soften its own claims in month three when its evidence base is challenged. You arrive second but with a defensible position. Whether this was the right trade depends on how recoverable second-mover share is in your category &mdash; and the data on that is not settled.</p>
+    </div>
+    <button class="btn-primary" onclick="finishScenario()" style="margin-top:16px;">Continue to your reflection &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d3b">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 3</div>
+      <h2 class="doc-title">A Softer Claim, A Cleaner Launch</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The General Counsel co-signs. The Marketing Director objects briefly &mdash; the softened claim does not anchor a campaign as effectively as the original would have. The CFO models the impact: the lower premium pushes payback to 28 months from 24. The committee approves the case at the revised premium. Launch proceeds on schedule. The competitor reaches market two weeks after you with a stronger claim; you spend the first six months in a competitive defensibility argument you would not have had to fight at the original claim level. The decision was honest. The cost of the honesty is now visible.</p>
+    </div>
+    <button class="btn-primary" onclick="finishScenario()" style="margin-top:16px;">Continue to your reflection &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d3c">
+    <div class="doc-header">
+      <div class="doc-label">Consequence &nbsp;&middot;&nbsp; Decision 3</div>
+      <h2 class="doc-title">A Window of Exposure</h2>
+    </div>
+    <div class="consequence">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The General Counsel asks for her objection to be minuted. The chair calls the decision: launch proceeds with the original claim, audit runs in parallel. Three weeks after launch, an industry blog runs an article questioning the claim. Four weeks after launch, the ACCC opens an informal inquiry. The brand pulls the lead claim voluntarily in week six and replaces it with a softened version &mdash; eight weeks earlier than required by enforcement. The premium has now eroded faster than Option B would have produced, and the brand reputation has absorbed the cost of the inquiry. The audit, when it completes, supports a stronger version of the original claim. By that point the launch has already had to absorb the climbdown. This is the most expensive of the three paths.</p>
+    </div>
+    <button class="btn-primary" onclick="finishScenario()" style="margin-top:16px;">Continue to your reflection &rarr;</button>
+  </div>
+
+  <div class="passage" id="p-d3-timeout">
+    <div class="doc-header">
+      <div class="doc-label">Time elapsed &nbsp;&middot;&nbsp; Decision 3</div>
+      <h2 class="doc-title">The Committee Decided Without You</h2>
+    </div>
+    <div class="consequence timeout">
+      <div class="consequence-label">What happens next</div>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">Ninety seconds elapsed. You had no answer. The General Counsel turned to the chair: "Without a clear position from the proposer, I cannot co-sign the risk register as it stands. I recommend the committee defer." The chair defers the decision. Your development budget is held pending a return paper. Two weeks later you bring the paper back &mdash; the decision is taken in a smaller room, by people who were not in the original meeting, with less context. The outcome is reasonable. The cost is that the decision was no longer yours to shape.</p>
+    </div>
+    <button class="btn-primary" onclick="finishScenario()" style="margin-top:16px;">Continue to your reflection &rarr;</button>
+  </div>
+
+  <!-- ══════════════════════════════════ FINAL -->
+  <div class="passage" id="p-final">
+
+    <div class="doc-header">
+      <div class="doc-label">Practice complete &nbsp;&middot;&nbsp; Reflection and export</div>
+      <h2 class="doc-title">Your Record of Decisions</h2>
+    </div>
+
+    <p class="body-text">You have completed the practice scenario. Nothing here is assessed. The record below is yours to use as preparation for Assessment 3.</p>
+
+    <div class="choices-record" id="choices-summary">
+      <div class="choices-record-title">Your three decisions</div>
+      <div class="choices-record-row">
+        <span class="choices-record-label">Decision 1 &mdash; Segment claim</span>
+        <span class="choices-record-value" id="record-d1">&mdash;</span>
+      </div>
+      <div class="choices-record-row">
+        <span class="choices-record-label">Decision 2 &mdash; Scale claim</span>
+        <span class="choices-record-value" id="record-d2">&mdash;</span>
+      </div>
+      <div class="choices-record-row">
+        <span class="choices-record-label">Decision 3 &mdash; Key risk claim</span>
+        <span class="choices-record-value" id="record-d3">&mdash;</span>
+      </div>
+    </div>
+
+    <div class="final-note">
+      <div class="final-note-title">Three things to reflect on before Assessment 3</div>
+      <ol style="font-size:14px;line-height:1.9;color:var(--ink-mid);padding-left:16px;margin-top:8px;">
+        <li style="margin-bottom:10px;"><strong>Which decision did you find hardest?</strong> The hardest decision is usually the one that surfaces the weakest of your three claims in your own thinking. Open your Tutorial 11.3 draft and ask: is this claim weak because the evidence is weak, or because I have not yet done the translation move on it? The honest answer tells you where to spend your sharpening time.</li>
+        <li style="margin-bottom:10px;"><strong>Where did you feel the time pressure most?</strong> The 90-second timer compresses what would normally be a 10-minute deliberation. In the assessed scenario, the timer is the same. Notice whether you defaulted to the option you understood fastest, or the option you believed in most. These are not always the same option, and the difference is diagnostic.</li>
+        <li style="margin-bottom:0;"><strong>What pattern did your three choices form?</strong> Were you mostly defending your original claims (A patterns), mostly revising under pressure (B patterns), or mostly reframing the question (C patterns)? None of these is wrong. The pattern is information about how you read evidence under commercial pressure &mdash; useful information to bring into Assessment 3.</li>
+      </ol>
+    </div>
+
+    <div style="background:var(--purple);border-radius:8px;padding:18px 22px;margin-top:20px;color:#fff;">
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px;">Export your record</p>
+      <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.9); margin-bottom:14px;">Download a Word document with your three decisions, the consequences you triggered, and the reflection prompts above. Save it to your Assessment 3 working folder &mdash; this is the same export process that will run in Week 12.</p>
+      <button class="btn-primary" style="background:#fff; color:var(--purple);" onclick="exportToWord()">Download my record (.doc) &darr;</button>
+    </div>
+
+    <div style="background:var(--cream-dark);border-radius:8px;padding:16px 22px;margin-top:18px;">
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink);">Coming in Week 12</p>
+      <p style="font-size:13px;line-height:1.6;color:var(--ink-mid);">The Assessment 3 brief releases at six o&rsquo;clock on the Friday of Week 12. The assessed scenario will use this same format with a 90-second timer, three decision points, and a Word export. The decisions will be tailored to your group&rsquo;s concept rather than to a generic case. Your Assessment 2 portfolio is the primary source &mdash; have it open before you begin.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn-secondary" onclick="restart()">Run the scenario again</button>
+    </div>
+
+  </div>
+
 </div>
 
-<p><iframe style="border: none;" src="https://rmit-mktg1092.github.io/week11-practice-scenario/" width="100%" height="1200px" loading="lazy"></iframe></p>
+<script>
+  // ===== State =====
+  var choices = { 1:null, 2:null, 3:null };
+  var consequences = { 1:null, 2:null, 3:null };
+  var timer = null;
+  var timeLeft = 90;
+  var studentName = '';
 
-<!-- What to do after -->
-<h3 style="color: #ba372a; margin-top: 28px; margin-bottom: 10px;">After you finish the practice scenario</h3>
+  var choiceLabels = {
+    '1A':'Option A — Defend the segment, change the channel strategy',
+    '1B':'Option B — Widen the segment to meet the retailer threshold',
+    '1C':'Option C — Decline to choose and propose a four-week deep dive',
+    '1T':'Timed out — committee deferred the question',
+    '2A':'Option A — Defend the 2 per cent on differentiation grounds',
+    '2B':'Option B — Revise the share claim to 1.2 per cent',
+    '2C':'Option C — Reframe as 2 per cent of a narrower subsegment',
+    '2T':'Timed out — scale claim left as an open question',
+    '3A':'Option A — Delay launch by two months to close the evidence gap',
+    '3B':'Option B — Launch on time with a softened claim',
+    '3C':'Option C — Launch on time with original claim, audit in parallel',
+    '3T':'Timed out — committee deferred the decision'
+  };
 
-<p>Take three minutes and write down three things in your Assessment 3 working document. These notes are for you, not for submission, but they will sharpen your Week 12 work.</p>
+  var consequenceTitles = {
+    '1A':'A Channel-First Defence',
+    '1B':'A Wider Segment, A Weaker Story',
+    '1C':'A Four-Week Pause',
+    '1T':'The Committee Filled the Silence',
+    '2A':'Differentiation Versus Evidence',
+    '2B':'A Smaller, Honester Number',
+    '2C':'A Sharper Denominator',
+    '2T':'A Number Without a Defence',
+    '3A':'Defensible But Second',
+    '3B':'A Softer Claim, A Cleaner Launch',
+    '3C':'A Window of Exposure',
+    '3T':'The Committee Decided Without You'
+  };
 
-<ol style="margin-bottom: 22px;">
-  <li style="margin-bottom: 8px;"><strong>The decision you felt most confident about.</strong> What made the confidence possible &mdash; was it the evidence in front of you, a framework you already knew, or a pattern you recognised from your group&rsquo;s concept?</li>
-  <li style="margin-bottom: 8px;"><strong>The decision you felt least confident about.</strong> What was missing &mdash; specific evidence, a clearer framework, or a sharper sense of what the investor cared about?</li>
-  <li style="margin-bottom: 0;"><strong>The pattern you noticed in your own reasoning.</strong> Did you default to optimistic readings of the evidence? Pessimistic? Risk-averse? The pattern is not a problem in itself, but knowing your own default helps you read your own Assessment 3 draft more honestly.</li>
-</ol>
+  // ===== Navigation =====
+  function goTo(id) {
+    stopTimer();
+    document.querySelectorAll('.passage').forEach(function(p){ p.classList.remove('active'); });
+    var t = document.getElementById(id);
+    if (t) {
+      t.classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+      // Start timer if we are arriving at a decision page
+      if (id === 'p-d1') startTimer(1);
+      else if (id === 'p-d2') startTimer(2);
+      else if (id === 'p-d3') startTimer(3);
+    }
+  }
 
-<!-- Tip box -->
-<div style="background: #fff8f6; border: 1px solid #f1d4cd; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px;">
-  <p style="margin-top: 0;"><strong>Tip.</strong> The practice scenario is not a quiz. There is no score at the end and no grade attached. The value is entirely in what you notice about your own reasoning under time pressure. Treat it the way a musician treats a sound check &mdash; the point is not the performance, it is hearing yourself clearly before the performance that matters.</p>
-  <p style="margin-bottom: 0;"><strong>If you run into a technical issue,</strong> please flag it before Week 12 so it can be resolved before the assessed scenario goes live. You can post in the course Q and A or email your tutor.</p>
-</div>
+  function startScenario() {
+    var nameField = document.getElementById('student-name');
+    studentName = nameField ? nameField.value.trim() : '';
+    goTo('p-d1');
+  }
 
-<p>&nbsp;</p>
-<p><span style="font-size: 8pt;">&copy; RMIT University 2026</span></p>
+  function choose(d, opt) {
+    stopTimer();
+    choices[d] = opt;
+    consequences[d] = consequenceTitles[d + opt];
+    goTo('p-d' + d + opt.toLowerCase());
+  }
+
+  function restart() {
+    choices = { 1:null, 2:null, 3:null };
+    consequences = { 1:null, 2:null, 3:null };
+    goTo('p-instructions');
+  }
+
+  function finishScenario() {
+    // Populate the record display
+    document.getElementById('record-d1').textContent = choices[1] ? choiceLabels['1' + choices[1]] : 'Not recorded';
+    document.getElementById('record-d2').textContent = choices[2] ? choiceLabels['2' + choices[2]] : 'Not recorded';
+    document.getElementById('record-d3').textContent = choices[3] ? choiceLabels['3' + choices[3]] : 'Not recorded';
+    goTo('p-final');
+  }
+
+  // ===== Timer =====
+  function startTimer(decisionNum) {
+    stopTimer();
+    timeLeft = 90;
+    var display = document.getElementById('timer-display');
+    display.classList.add('active');
+    display.classList.remove('warning','critical');
+    updateTimerDisplay();
+    timer = setInterval(function(){
+      timeLeft--;
+      updateTimerDisplay();
+      if (timeLeft <= 30 && timeLeft > 10) display.classList.add('warning');
+      if (timeLeft <= 10) { display.classList.remove('warning'); display.classList.add('critical'); }
+      if (timeLeft <= 0) {
+        stopTimer();
+        handleTimeout(decisionNum);
+      }
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timer) { clearInterval(timer); timer = null; }
+    var display = document.getElementById('timer-display');
+    if (display) { display.classList.remove('active','warning','critical'); }
+  }
+
+  function updateTimerDisplay() {
+    var mins = Math.floor(timeLeft / 60);
+    var secs = timeLeft % 60;
+    var formatted = mins + ':' + (secs < 10 ? '0' : '') + secs;
+    var val = document.getElementById('timer-value');
+    if (val) val.textContent = formatted;
+  }
+
+  function handleTimeout(d) {
+    choices[d] = 'T';
+    consequences[d] = consequenceTitles[d + 'T'];
+    // Disable all buttons for that decision (in case user is mid-click)
+    var box = document.getElementById('d' + d + '-choices');
+    if (box) box.querySelectorAll('button').forEach(function(b){ b.disabled = true; });
+    goTo('p-d' + d + '-timeout');
+  }
+
+  // ===== Word Export =====
+  function exportToWord() {
+    var now = new Date();
+    var dateStr = now.toLocaleDateString('en-AU', { year:'numeric', month:'long', day:'numeric' });
+    var timeStr = now.toLocaleTimeString('en-AU', { hour:'2-digit', minute:'2-digit' });
+    var nameLine = studentName ? studentName : 'Anonymous';
+
+    var d1Label = choices[1] ? choiceLabels['1' + choices[1]] : 'Not recorded';
+    var d2Label = choices[2] ? choiceLabels['2' + choices[2]] : 'Not recorded';
+    var d3Label = choices[3] ? choiceLabels['3' + choices[3]] : 'Not recorded';
+
+    var d1Cons = consequences[1] || 'No consequence recorded';
+    var d2Cons = consequences[2] || 'No consequence recorded';
+    var d3Cons = consequences[3] || 'No consequence recorded';
+
+    var html = ''
+      + '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+      + '<head><meta charset="utf-8"><title>Week 11 Practice Scenario Record</title>'
+      + '<style>'
+      + 'body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #1a1614; line-height: 1.5; }'
+      + 'h1 { font-family: Georgia, serif; font-size: 20pt; color: #4a2a7a; margin-bottom: 4pt; }'
+      + 'h2 { font-family: Georgia, serif; font-size: 14pt; color: #4a2a7a; margin-top: 18pt; margin-bottom: 6pt; }'
+      + 'h3 { font-size: 11pt; color: #4a2a7a; text-transform: uppercase; letter-spacing: 1pt; margin-top: 14pt; margin-bottom: 4pt; }'
+      + '.meta { color: #7a6a65; font-style: italic; font-size: 10pt; margin-bottom: 20pt; }'
+      + '.decision-block { background: #f0ecf9; border-left: 4pt solid #4a2a7a; padding: 10pt 14pt; margin: 10pt 0; }'
+      + '.label { font-weight: bold; color: #4a2a7a; }'
+      + '.footer { margin-top: 30pt; padding-top: 10pt; border-top: 1pt solid #ddd4cc; font-size: 9pt; color: #7a6a65; font-style: italic; }'
+      + 'ol li { margin-bottom: 8pt; }'
+      + '</style></head><body>'
+      + '<h1>Week 11 Practice Scenario &mdash; Decision Record</h1>'
+      + '<p class="meta">MKTG1092 Product Innovation and Management &middot; RMIT University 2026<br>'
+      + 'Completed by: ' + escapeHtml(nameLine) + '<br>'
+      + 'Date: ' + dateStr + ' at ' + timeStr + '</p>'
+      + '<p>This document records the three decisions made during the Week 11 Practice Scenario and is provided as a preparation aid for Assessment 3. Nothing in this document is assessed.</p>'
+
+      + '<h2>The Investment Committee &mdash; Three Decisions</h2>'
+
+      + '<div class="decision-block">'
+      + '<h3>Decision 1 &mdash; The Segment Claim</h3>'
+      + '<p><span class="label">The challenge:</span> The Head of Buying argued that a 720,000-household segment claim and a national-scale ambition could not both be true.</p>'
+      + '<p><span class="label">Your decision:</span> ' + escapeHtml(d1Label) + '</p>'
+      + '<p><span class="label">Consequence:</span> ' + escapeHtml(d1Cons) + '</p>'
+      + '</div>'
+
+      + '<div class="decision-block">'
+      + '<h3>Decision 2 &mdash; The Scale Claim</h3>'
+      + '<p><span class="label">The challenge:</span> The CFO showed that a 2 per cent share claim required taking 0.8 per cent of incumbent share from Unilever and Procter and Gamble &mdash; against a peer-launch benchmark of 0.3 per cent.</p>'
+      + '<p><span class="label">Your decision:</span> ' + escapeHtml(d2Label) + '</p>'
+      + '<p><span class="label">Consequence:</span> ' + escapeHtml(d2Cons) + '</p>'
+      + '</div>'
+
+      + '<div class="decision-block">'
+      + '<h3>Decision 3 &mdash; The Key Risk Claim</h3>'
+      + '<p><span class="label">The challenge:</span> The General Counsel surfaced the conflict between a disclosed regulatory risk on the lead marketing claim and a launch window that closed two months before the evidence gap could be closed.</p>'
+      + '<p><span class="label">Your decision:</span> ' + escapeHtml(d3Label) + '</p>'
+      + '<p><span class="label">Consequence:</span> ' + escapeHtml(d3Cons) + '</p>'
+      + '</div>'
+
+      + '<h2>Reflection Prompts for Assessment 3</h2>'
+      + '<ol>'
+      + '<li><strong>Which decision did you find hardest?</strong> The hardest decision usually surfaces the weakest of your three claims in your own thinking. Open your Tutorial 11.3 draft and ask whether that claim is weak because the evidence is weak, or because the translation move has not yet been done on it. The honest answer tells you where to spend your sharpening time.</li>'
+      + '<li><strong>Where did you feel the time pressure most?</strong> The 90-second timer compresses what would normally be a 10-minute deliberation. In the assessed scenario the timer is the same. Notice whether you defaulted to the option you understood fastest, or the option you believed in most &mdash; these are not always the same option, and the difference is diagnostic.</li>'
+      + '<li><strong>What pattern did your three choices form?</strong> Were you mostly defending your original claims, mostly revising under pressure, or mostly reframing the question? None of these is wrong. The pattern is information about how you read evidence under commercial pressure &mdash; useful information to bring into Assessment 3.</li>'
+      + '</ol>'
+
+      + '<h2>What to do with this record</h2>'
+      + '<p>Save this document to your Assessment 3 working folder. Read it again after you have drafted Section 3 of your final report (the Business Case section). The patterns you see in this record will tell you something about whether your final draft is shaped by evidence or by the same default reasoning that surfaced under time pressure in this scenario.</p>'
+
+      + '<div class="footer">&copy; RMIT University 2026 &middot; MKTG1092 Product Innovation and Management &middot; Week 11 Practice Scenario &middot; Not assessed</div>'
+      + '</body></html>';
+
+    var blob = new Blob(['\ufeff', html], { type:'application/msword' });
+    var url = URL.createObjectURL(blob);
+    var fileName = 'MKTG1092_Week11_Practice_Scenario_Record';
+    if (studentName) fileName += '_' + studentName.replace(/[^a-zA-Z0-9]/g,'_');
+    fileName += '.doc';
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 100);
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
+</body>
+</html>
