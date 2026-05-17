@@ -1,365 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practice Scenario — Week 11 | MKTG1092</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+<!-- Topic 11.4 — Practice Scenario — MKTG1092 Product Innovation and Management -->
+<!-- Canvas HTML fragment — do not include DOCTYPE, html, head, or body tags -->
 
-  :root {
-    --red:#ba372a; --red-light:#f5ece9;
-    --ink:#1a1614; --ink-mid:#3d2e2a; --ink-light:#7a6a65;
-    --cream:#faf7f4; --cream-dark:#f0ebe4; --border:#ddd4cc;
-    --purple:#4a2a7a; --purple-light:#f0ecf9;
-  }
+<h2 style="color: #ba372a; font-size: 28pt; margin-top: 50px; margin-bottom: 14px;">Topic 11.4: Practice Scenario</h2>
+<p style="color: #2c3e50; margin-top: 0;">A short branching exercise that puts you in the role of a Product Innovation Manager making real-time investment decisions &mdash; the same format you will encounter in Assessment 3</p>
 
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:'Source Sans 3',Georgia,sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; }
-
-  .masthead { width:100%; background:var(--purple); padding:12px 40px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:10; }
-  .masthead-title { font-size:12px; font-weight:600; color:rgba(255,255,255,0.9); letter-spacing:0.08em; text-transform:uppercase; }
-  .masthead-badge { background:rgba(255,255,255,0.2); color:#fff; font-size:10px; padding:3px 10px; border-radius:20px; font-weight:600; letter-spacing:0.06em; }
-
-  .container { max-width:760px; margin:0 auto; padding:36px 40px 80px; }
-
-  .practice-banner { background:var(--purple); color:#fff; border-radius:10px; padding:16px 22px; margin-bottom:28px; display:flex; align-items:center; gap:14px; }
-  .practice-banner-icon { font-size:26px; }
-  .practice-banner-text { font-size:13.5px; line-height:1.55; }
-  .practice-banner-text strong { font-size:14px; display:block; margin-bottom:3px; }
-
-  .passage { display:none; animation:fadeIn 0.4s ease; }
-  .passage.active { display:block; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-
-  .doc-header { border-top:3px solid var(--purple); padding-top:18px; margin-bottom:22px; }
-  .doc-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:7px; }
-  .doc-title { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--ink); line-height:1.25; margin-bottom:5px; }
-  .doc-meta { font-size:12px; color:var(--ink-light); font-style:italic; }
-
-  .body-text { font-size:15px; line-height:1.78; color:var(--ink-mid); margin-bottom:14px; }
-  .memo { background:var(--cream-dark); border-left:4px solid var(--purple); border-radius:0 8px 8px 0; padding:14px 18px; margin:18px 0; font-size:13.5px; color:var(--ink-mid); line-height:1.65; }
-  .memo strong { color:var(--purple); }
-  .callout { background:#fff; border:1px solid var(--border); border-radius:8px; padding:16px 20px; margin:18px 0; font-size:14px; line-height:1.65; color:var(--ink); }
-  .callout-title { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:8px; }
-
-  .numbers-box { background:var(--purple-light); border:1px solid #c9bce6; border-radius:8px; padding:16px 20px; margin:18px 0; }
-  .numbers-title { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
-  .numbers-row { display:flex; gap:20px; flex-wrap:wrap; }
-  .numbers-item { flex:1; min-width:160px; }
-  .numbers-label { font-size:11px; color:var(--ink-light); margin-bottom:3px; }
-  .numbers-value { font-size:18px; font-weight:700; color:var(--purple); }
-  .numbers-context { font-size:11px; color:var(--ink-light); font-style:italic; }
-
-  .decision-prompt { margin:24px 0 18px; padding:18px 22px; background:var(--purple); border-radius:8px; color:#fff; }
-  .decision-prompt-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:7px; }
-  .decision-prompt-text { font-family:'Playfair Display',serif; font-size:17px; font-weight:600; line-height:1.4; color:#fff; }
-
-  .choices { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
-  .choice-btn { background:#fff; border:2px solid var(--border); border-radius:8px; padding:14px 18px; text-align:left; cursor:pointer; transition:all 0.2s; font-family:'Source Sans 3',sans-serif; }
-  .choice-btn:hover { border-color:var(--purple); background:var(--purple-light); transform:translateX(3px); }
-  .choice-number { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--purple); margin-bottom:3px; }
-  .choice-text { font-size:14px; font-weight:600; color:var(--ink); line-height:1.4; margin-bottom:3px; }
-  .choice-sub { font-size:12.5px; color:var(--ink-light); line-height:1.45; font-style:italic; }
-
-  .consequence { background:#fff; border:1px solid var(--border); border-top:3px solid var(--purple); border-radius:0 0 8px 8px; padding:16px 20px; margin:18px 0; }
-  .consequence-label { font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple); margin-bottom:8px; }
-
-  .btn-primary { display:inline-block; background:var(--purple); color:#fff; border:none; border-radius:8px; padding:13px 26px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s; }
-  .btn-primary:hover { background:#3a1f62; }
-
-  .divider { height:1px; background:var(--border); margin:22px 0; }
-
-  .welcome-hero { text-align:center; padding:32px 0 24px; border-bottom:1px solid var(--border); margin-bottom:28px; }
-  .welcome-logo { width:44px; height:44px; background:var(--purple); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:20px; color:#fff; }
-  .welcome-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--ink); margin-bottom:6px; }
-  .welcome-sub { font-size:14px; color:var(--ink-light); font-style:italic; }
-
-  .final-note { background:#fff; border:1px solid var(--border); border-radius:8px; padding:20px 24px; margin-top:24px; }
-  .final-note-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--ink); margin-bottom:10px; }
-
-  @media(max-width:600px){ .container{padding:20px 18px 50px;} .masthead{padding:10px 18px;} .numbers-row{flex-direction:column;} }
-</style>
-</head>
-<body>
-
-<div class="masthead">
-  <span class="masthead-title">MKTG1092 &nbsp;·&nbsp; Week 11 &nbsp;·&nbsp; Practice Scenario</span>
-  <span class="masthead-badge">Practice only &mdash; not assessed</span>
+<!-- What this is -->
+<div style="background: #f6f6f6; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px;">
+  <p style="margin-top: 0;"><strong>What this practice scenario is.</strong> The exercise below puts you in the role of a Product Innovation Manager who must make a sequence of investment decisions under time pressure. Each decision opens a different next decision, and the path you take depends on how you read the evidence in front of you. There is no single right answer &mdash; the discipline is the same one you have been building all week, applied at speed.</p>
+  <p style="margin-bottom: 0;"><strong>Why you are doing it now.</strong> Assessment 3 includes a similar branching exercise as part of the brief that releases on the Friday of Week 12. The exercise on this page is your low-stakes opportunity to experience the format, see how the timer works, and feel where the discipline of the translation move and the three claims becomes most useful. Nothing on this page is assessed.</p>
 </div>
 
-<div class="container">
+<!-- How to use it -->
+<h3 style="color: #ba372a; margin-top: 28px; margin-bottom: 10px;">How to use this practice scenario</h3>
 
-  <!-- ══════════════════════════════════ WELCOME -->
-  <div class="passage active" id="p-welcome">
+<ol style="margin-bottom: 22px;">
+  <li style="margin-bottom: 8px;"><strong>Have your three claims open.</strong> The drafted segment, scale, and key risk claims from Tutorial 11.3 are your reference material. The practice scenario will not test you on your specific concept, but the disciplines are the same.</li>
+  <li style="margin-bottom: 8px;"><strong>Read every decision page before you choose.</strong> The timer per decision is short. Reading first, deciding second is faster than reading and deciding together &mdash; the same is true in the assessed scenario.</li>
+  <li style="margin-bottom: 8px;"><strong>Notice where you hesitate.</strong> The moments where you are unsure are diagnostic. They tell you which of the three claims is least sharp in your own thinking. Make a note of these moments &mdash; they are where the most useful sharpening work for Week 12 will happen.</li>
+  <li style="margin-bottom: 0;"><strong>Run the exercise more than once if you have time.</strong> Different paths will surface different reasoning. You will see different evidence in each path and your own decision pattern will become visible.</li>
+</ol>
 
-    <div class="practice-banner">
-      <div class="practice-banner-icon">&#128202;</div>
-      <div class="practice-banner-text">
-        <strong>This is a practice scenario — it is not assessed.</strong>
-        It focuses on the business case skills from this week's lectures and uses the same format as Assessment 3. There is no timer on this practice version. Work through it at your own pace and use the reflection at the end to prepare for the real scenario.
-      </div>
-    </div>
-
-    <div class="welcome-hero">
-      <div class="welcome-logo">&#9670;</div>
-      <h1 class="welcome-title">The Business Case</h1>
-      <p class="welcome-sub">A practice branching scenario &nbsp;·&nbsp; Week 11 — Business case development and financial projections</p>
-    </div>
-
-    <p class="body-text">You are a Product Innovation Manager at the organisation. Your concept has cleared the gate review and is now in the development phase. The CFO has reviewed your business case and has raised two questions that require a direct response before the development budget is formally released.</p>
-
-    <p class="body-text">This practice scenario puts you in the middle of a business case review — exactly the kind of commercial pressure Assessment 3 will simulate. There is no timer and no submission requirement. Use it to build your confidence with the format and with the kind of financial and commercial reasoning this assessment rewards.</p>
-
-    <div class="memo">
-      <strong>What to notice:</strong> A business case is not just a financial model. It is an argument. The CFO's questions in this scenario are designed to test whether your commercial logic is internally consistent — not whether you can produce precise numbers. Pay attention to the difference between what the numbers can and cannot tell you.
-    </div>
-
-    <button class="btn-primary" onclick="goTo('p-d1')">Begin the practice scenario &rarr;</button>
-
-  </div>
-
-  <!-- ══════════════════════════════════ DECISION 1 -->
-  <div class="passage" id="p-d1">
-
-    <div class="doc-header">
-      <div class="doc-label">Practice Decision Point 1 of 2 &nbsp;·&nbsp; Financial Projections Challenge</div>
-      <h2 class="doc-title">The Year 1 Projection Is Being Questioned</h2>
-      <p class="doc-meta">Week 11 context — Business case development and financial projections</p>
-    </div>
-
-    <p class="body-text">The CFO has reviewed the financial projections in your business case. She accepts the cost structure and the Year 2 and Year 3 growth assumptions. But she has a specific concern about Year 1.</p>
-
-    <div class="callout">
-      <div class="callout-title">The CFO's Question</div>
-      "Your Year 1 subscriber acquisition target is 2,400 subscribers at an average monthly spend of $42. That gives you a Year 1 revenue of approximately $1.2 million. My question is simple: how confident are you in that 2,400 subscriber target? Because your acquisition cost assumptions — $18 per subscriber through digital channels — would need to hold precisely for the unit economics to work. If your acquisition cost is actually $25, which is more consistent with what I am seeing in comparable categories, you lose $43,000 on Year 1 subscriber acquisition alone before you factor in fulfilment. How did you arrive at $18?"
-    </div>
-
-    <div class="numbers-box">
-      <div class="numbers-title">Business case assumptions under review</div>
-      <div class="numbers-row">
-        <div class="numbers-item">
-          <div class="numbers-label">Year 1 subscriber target</div>
-          <div class="numbers-value">2,400</div>
-          <div class="numbers-context">Based on social media reach estimates</div>
-        </div>
-        <div class="numbers-item">
-          <div class="numbers-label">Average monthly spend</div>
-          <div class="numbers-value">$42</div>
-          <div class="numbers-context">Mid-range subscription pricing</div>
-        </div>
-        <div class="numbers-item">
-          <div class="numbers-label">Acquisition cost assumed</div>
-          <div class="numbers-value">$18</div>
-          <div class="numbers-context">Digital channel estimate</div>
-        </div>
-        <div class="numbers-item">
-          <div class="numbers-label">CFO's comparable category estimate</div>
-          <div class="numbers-value">$25</div>
-          <div class="numbers-context">Based on category benchmarks</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="memo">
-      <strong>Think carefully before choosing.</strong> The CFO is not asking you to change the number. She is asking you to defend how you arrived at it. A business case projection that cannot be explained is not a business case — it is a guess. What source or reasoning underlies the $18 acquisition cost assumption in your case?
-    </div>
-
-    <div class="decision-prompt">
-      <div class="decision-prompt-label">Your decision</div>
-      <div class="decision-prompt-text">How do you respond to the CFO's question about the acquisition cost assumption?</div>
-    </div>
-
-    <div class="choices">
-      <button class="choice-btn" onclick="choose(1,'A')">
-        <div class="choice-number">Option A</div>
-        <div class="choice-text">Defend the $18 figure using comparable product data from adjacent subscription categories</div>
-        <div class="choice-sub">You argue that the $18 figure is based on acquisition cost benchmarks from comparable subscription products in the consumer lifestyle categories, where digitally native audiences have lower acquisition costs than the broader consumer products market. You stand by the assumption.</div>
-      </button>
-      <button class="choice-btn" onclick="choose(1,'B')">
-        <div class="choice-number">Option B</div>
-        <div class="choice-text">Accept the CFO's $25 estimate and revise the Year 1 projections</div>
-        <div class="choice-sub">You acknowledge that the $18 figure was an optimistic estimate and adopt the CFO's $25 benchmark. You revise the Year 1 projections accordingly and show whether the investment case still holds at the higher acquisition cost.</div>
-      </button>
-      <button class="choice-btn" onclick="choose(1,'C')">
-        <div class="choice-number">Option C</div>
-        <div class="choice-text">Propose a pilot to validate the actual acquisition cost before committing to full launch</div>
-        <div class="choice-sub">You acknowledge that neither figure can be confirmed without market testing. You propose a small-scale paid acquisition pilot — 200 subscribers, $5,000 budget — to establish the actual acquisition cost before the full Year 1 budget is committed.</div>
-      </button>
-    </div>
-
-  </div>
-
-  <!-- D1 Results -->
-  <div class="passage" id="p-d1a">
-    <div class="doc-header">
-      <div class="doc-label">Consequence &nbsp;·&nbsp; Practice Decision Point 1</div>
-      <h2 class="doc-title">Defending the Assumption</h2>
-    </div>
-    <div class="consequence">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The CFO accepts the comparable category argument conditionally. She adds a condition to the budget release: if the actual acquisition cost in the first 90 days of launch exceeds $22, the development team must return to the CFO before committing further acquisition spend. The development budget is released with this condition attached. Your projection stands — but so does the risk. The second decision point arrives when the 90-day acquisition data comes in.</p>
-    </div>
-    <p style="font-size:12px;color:var(--ink-light);font-style:italic;margin-top:8px;">Choice recorded: <strong style="color:var(--ink);">Option A — Defend the $18 assumption.</strong></p>
-    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
-  </div>
-
-  <div class="passage" id="p-d1b">
-    <div class="doc-header">
-      <div class="doc-label">Consequence &nbsp;·&nbsp; Practice Decision Point 1</div>
-      <h2 class="doc-title">A Revised Case</h2>
-    </div>
-    <div class="consequence">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">You revise the projections to $25 acquisition cost. The Year 1 unit economics are now break-even rather than marginally profitable. The CFO appreciates the honesty. The board approves the development budget with the revised numbers, noting that Year 2 and Year 3 growth needs to be strong to justify the Year 1 investment. You will face a question in the second decision point about how to manage the board's expectations against the new numbers.</p>
-    </div>
-    <p style="font-size:12px;color:var(--ink-light);font-style:italic;margin-top:8px;">Choice recorded: <strong style="color:var(--ink);">Option B — Revise to $25 acquisition cost.</strong></p>
-    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
-  </div>
-
-  <div class="passage" id="p-d1c">
-    <div class="doc-header">
-      <div class="doc-label">Consequence &nbsp;·&nbsp; Practice Decision Point 1</div>
-      <h2 class="doc-title">Evidence Before Commitment</h2>
-    </div>
-    <div class="consequence">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The CFO endorses the pilot proposal. The $5,000 pilot budget is approved immediately. The full development budget is held pending pilot results — expected in six weeks. The pilot runs and returns an actual acquisition cost of $21.50. This is between your original estimate and the CFO's benchmark. You now need to decide how to use this data in the revised business case. That becomes the second decision point.</p>
-    </div>
-    <p style="font-size:12px;color:var(--ink-light);font-style:italic;margin-top:8px;">Choice recorded: <strong style="color:var(--ink);">Option C — Propose acquisition pilot.</strong></p>
-    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
-  </div>
-
-  <!-- ══════════════════════════════════ DECISION 2 -->
-  <div class="passage" id="p-d2">
-
-    <div class="doc-header">
-      <div class="doc-label">Practice Decision Point 2 of 2 &nbsp;·&nbsp; Investor Communication Challenge</div>
-      <h2 class="doc-title">The Board Wants a Three-Year Projection</h2>
-      <p class="doc-meta">Week 11 context — Business case development and managing financial uncertainty</p>
-    </div>
-
-    <p class="body-text">The board has approved the development budget in principle. Before the final sign-off, the chair has asked for a three-year revenue projection to be presented at the next board meeting. The CFO has asked you to prepare it.</p>
-
-    <div class="callout">
-      <div class="callout-title">The Challenge</div>
-      Three-year projections for a new product in a new category are inherently uncertain. The inputs — subscriber growth rate, churn rate, average revenue per user, and customer lifetime value — cannot all be known with confidence. But the board expects a number. A projection that is too conservative may not justify the investment. A projection that is too optimistic sets expectations that the product may not meet and damages credibility when it misses.
-    </div>
-
-    <p class="body-text">You have two viable approaches to presenting the three-year projection, and a third that avoids the problem but introduces a different one.</p>
-
-    <div class="memo">
-      <strong>Think carefully before choosing.</strong> Financial projections in a business case are not forecasts — they are arguments. What you are really being asked to show is not what will happen but whether the investment logic is sound under a range of reasonable assumptions. A board that understands this will respond better to honest range-based thinking than to false precision.
-    </div>
-
-    <div class="decision-prompt">
-      <div class="decision-prompt-label">Your decision</div>
-      <div class="decision-prompt-text">How do you present the three-year revenue projection?</div>
-    </div>
-
-    <div class="choices">
-      <button class="choice-btn" onclick="choose(2,'A')">
-        <div class="choice-number">Option A</div>
-        <div class="choice-text">Present a single-line best-estimate projection with detailed assumption footnotes</div>
-        <div class="choice-sub">You present one three-year number based on your best estimates of subscriber growth, churn, and average revenue. Every assumption is footnoted transparently. The board gets a clear headline number and the transparency to interrogate it.</div>
-      </button>
-      <button class="choice-btn" onclick="choose(2,'B')">
-        <div class="choice-number">Option B</div>
-        <div class="choice-text">Present three scenarios — base case, downside, and upside — with the investment case made on the base case</div>
-        <div class="choice-sub">You present a range of outcomes based on different assumptions about subscriber growth and churn. The investment recommendation is based on the base case, but the board can see what happens under less favourable conditions before they commit.</div>
-      </button>
-      <button class="choice-btn" onclick="choose(2,'C')">
-        <div class="choice-number">Option C</div>
-        <div class="choice-text">Decline to present a three-year projection and instead present a twelve-month rolling target with a review trigger</div>
-        <div class="choice-sub">You argue that a three-year projection for a new product in an untested category would be so speculative as to be misleading. Instead, you propose a twelve-month target with clearly defined metrics that will trigger a formal review before Year 2 investment is committed.</div>
-      </button>
-    </div>
-
-  </div>
-
-  <!-- D2 Results -->
-  <div class="passage" id="p-d2a">
-    <div class="doc-header">
-      <div class="doc-label">Consequence &nbsp;·&nbsp; Practice Decision Point 2</div>
-      <h2 class="doc-title">A Single Number</h2>
-    </div>
-    <div class="consequence">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The board approves the investment. Twelve months later, the actual Year 1 results are 14% below the projected figure. The board chair asks why the projection did not account for this downside. Your footnotes — which did flag this as a risk — are noted but do not fully absorb the credibility damage. A projection with a single line creates a single point of failure. When the actual result misses, the question is always "why did you project that number?"</p>
-    </div>
-    <button class="btn-primary" onclick="goTo('p-final')" style="margin-top:16px;">See your reflection &rarr;</button>
-  </div>
-
-  <div class="passage" id="p-d2b">
-    <div class="doc-header">
-      <div class="doc-label">Consequence &nbsp;·&nbsp; Practice Decision Point 2</div>
-      <h2 class="doc-title">Scenario Thinking</h2>
-    </div>
-    <div class="consequence">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The board approves the investment. The three-scenario presentation is noted positively by two board members who comment that it reflects mature financial thinking. Twelve months later, the actual result falls between the base case and downside — within the range you presented. The board is able to evaluate the result against a framework you established rather than a single number you committed to. Credibility is maintained.</p>
-    </div>
-    <button class="btn-primary" onclick="goTo('p-final')" style="margin-top:16px;">See your reflection &rarr;</button>
-  </div>
-
-  <div class="passage" id="p-d2c">
-    <div class="doc-header">
-      <div class="doc-label">Consequence &nbsp;·&nbsp; Practice Decision Point 2</div>
-      <h2 class="doc-title">Principled Refusal</h2>
-    </div>
-    <div class="consequence">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The board chair is initially frustrated. Two other board members find the reasoning sound. After discussion, the twelve-month rolling approach is accepted with modifications — the board requests that a Year 2 projection be prepared at the six-month review rather than at twelve months. Your approach preserved intellectual honesty but created a governance process that required ongoing management. Whether this was the right trade-off depends on your board's approductite for transparency versus certainty.</p>
-    </div>
-    <button class="btn-primary" onclick="goTo('p-final')" style="margin-top:16px;">See your reflection &rarr;</button>
-  </div>
-
-  <!-- ══════════════════════════════════ FINAL -->
-  <div class="passage" id="p-final">
-
-    <div class="doc-header">
-      <div class="doc-label">Practice Complete &nbsp;·&nbsp; Reflection</div>
-      <h2 class="doc-title">What This Scenario Practised</h2>
-    </div>
-
-    <p class="body-text">You have completed the Week 11 practice scenario. No submission is required. Use the reflection below to prepare your thinking for Assessment 3.</p>
-
-    <div class="final-note">
-      <div class="final-note-title">Three things to reflect on</div>
-      <ol style="font-size:14px;line-height:1.9;color:var(--ink-mid);padding-left:16px;margin-top:8px;">
-        <li style="margin-bottom:10px;"><strong>What is the difference between a financial assumption and a financial fact?</strong> In Assessment 3, your business case section requires three evidence-based claims. The quality of those claims depends on your ability to distinguish between what your evidence can support and what requires an explicit assumption. This is exactly the skill the CFO's question in this scenario was testing.</li>
-        <li style="margin-bottom:10px;"><strong>How does the format force you to commit?</strong> In Assessment 3, you cannot present a three-scenario business case — you must make a recommendation. Notice how different that is from this practice scenario's Decision Point 2, where you could choose the scenario approach. Assessment 3 requires you to commit to a position and defend it, even under commercial uncertainty.</li>
-        <li><strong>What would your Assessment 2 group's evidence base actually support?</strong> The most important preparation you can do before Assessment 3 opens is to re-read your Assessment 2 portfolio and identify exactly what claims your group's evidence can and cannot support. The gap between those two things is where your justification will be most valuable — and most revealing.</li>
-      </ol>
-    </div>
-
-    <div style="background:var(--purple);border-radius:8px;padding:16px 22px;margin-top:20px;color:#fff;">
-      <p style="font-size:13px;font-weight:600;margin-bottom:6px;">One week until Assessment 3 opens</p>
-      <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.85);">Assessment 3 releases Friday 29 May 2026 at 6:00 pm. The scenario has three decision points with a 90-second timer on each. Your Assessment 2 portfolio is your primary resource — the scenario connects directly to your group's concept, segment, and Lab 4 constraint. Have your portfolio open and your Lab entries re-read before you begin.</p>
-    </div>
-
-    <div style="text-align:center;margin-top:28px;">
-      <button class="btn-primary" onclick="restart()">Restart the practice scenario</button>
-    </div>
-
-  </div>
-
+<!-- The embedded practice scenario -->
+<div style="background: #f7fbff; border: 1px solid #cfe3f6; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px;">
+  <p style="margin-top: 0;"><strong>Practice Scenario &mdash; open below.</strong> Allow approximately 15 to 20 minutes for one full run. If the exercise does not load inside the page, open it directly at <a href="https://rmit-mktg1092.github.io/week11-practice-scenario/" target="_blank" rel="noopener" style="color: #ba372a;">rmit-mktg1092.github.io/week11-practice-scenario/</a>.</p>
 </div>
 
-<script>
-  function goTo(id) {
-    document.querySelectorAll('.passage').forEach(p => p.classList.remove('active'));
-    const t = document.getElementById(id);
-    if (t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-  }
-  function choose(d, opt) {
-    const map = {
-      '1A':'p-d1a','1B':'p-d1b','1C':'p-d1c',
-      '2A':'p-d2a','2B':'p-d2b','2C':'p-d2c'
-    };
-    goTo(map[d+opt]);
-  }
-  function restart() { goTo('p-welcome'); }
-</script>
-</body>
-</html>
+<p><iframe style="border: none;" src="https://rmit-mktg1092.github.io/week11-practice-scenario/" width="100%" height="1200px" loading="lazy"></iframe></p>
+
+<!-- What to do after -->
+<h3 style="color: #ba372a; margin-top: 28px; margin-bottom: 10px;">After you finish the practice scenario</h3>
+
+<p>Take three minutes and write down three things in your Assessment 3 working document. These notes are for you, not for submission, but they will sharpen your Week 12 work.</p>
+
+<ol style="margin-bottom: 22px;">
+  <li style="margin-bottom: 8px;"><strong>The decision you felt most confident about.</strong> What made the confidence possible &mdash; was it the evidence in front of you, a framework you already knew, or a pattern you recognised from your group&rsquo;s concept?</li>
+  <li style="margin-bottom: 8px;"><strong>The decision you felt least confident about.</strong> What was missing &mdash; specific evidence, a clearer framework, or a sharper sense of what the investor cared about?</li>
+  <li style="margin-bottom: 0;"><strong>The pattern you noticed in your own reasoning.</strong> Did you default to optimistic readings of the evidence? Pessimistic? Risk-averse? The pattern is not a problem in itself, but knowing your own default helps you read your own Assessment 3 draft more honestly.</li>
+</ol>
+
+<!-- Tip box -->
+<div style="background: #fff8f6; border: 1px solid #f1d4cd; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px;">
+  <p style="margin-top: 0;"><strong>Tip.</strong> The practice scenario is not a quiz. There is no score at the end and no grade attached. The value is entirely in what you notice about your own reasoning under time pressure. Treat it the way a musician treats a sound check &mdash; the point is not the performance, it is hearing yourself clearly before the performance that matters.</p>
+  <p style="margin-bottom: 0;"><strong>If you run into a technical issue,</strong> please flag it before Week 12 so it can be resolved before the assessed scenario goes live. You can post in the course Q and A or email your tutor.</p>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 8pt;">&copy; RMIT University 2026</span></p>
