@@ -90,6 +90,13 @@
   .pattern-note { background:var(--gold-bg); border-left:4px solid var(--gold-border); border-radius:0 8px 8px 0; padding:12px 16px; margin:16px 0; font-size:12.5px; color:var(--ink-mid); }
   .pattern-note strong { color:var(--gold-ink); }
 
+  .justify-section { background:#fdfaf3; border:1px dashed var(--gold-border); border-radius:8px; padding:14px 18px; margin:16px 0; }
+  .justify-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-ink); margin-bottom:8px; display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
+  .optional-tag { font-weight:normal; color:var(--ink-light); text-transform:none; letter-spacing:0; font-size:10.5px; font-style:italic; }
+  .justify-textarea { width:100%; min-height:80px; padding:10px 12px; border:1px solid var(--border); border-radius:6px; font-family:'Source Sans 3',sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink); background:#fff; resize:vertical; transition:border 0.2s; }
+  .justify-textarea:focus { outline:none; border-color:var(--gold-border); }
+  .justify-help { font-size:11px; color:var(--ink-light); margin-top:7px; line-height:1.5; font-style:italic; }
+
   .btn-primary { display:inline-block; background:var(--purple); color:#fff; border:none; border-radius:8px; padding:13px 26px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s; text-decoration:none; }
   .btn-primary:hover { background:#3a1f62; }
   .btn-primary:disabled { background:#b5a8c9; cursor:not-allowed; }
@@ -192,6 +199,7 @@
         <li><strong>You will identify yourself.</strong> First name, last name, and student number are required. The Assessment 3 scenario will ask for the same information. We are practising the discipline of always identifying your work.</li>
         <li><strong>You will paste your three claims.</strong> Before the scenario begins, you must paste in the three claims you drafted in Tutorial 11.3 &mdash; segment, scale, and key risk. The scenario uses your own claims as the source material. You cannot proceed without all three.</li>
         <li><strong>Three decision points, ninety seconds each.</strong> A countdown timer runs at the top of the screen. When time runs out, the committee makes the decision for you &mdash; and you see what that costs. The assessed scenario uses the same timer.</li>
+        <li><strong>Each decision has an optional reasoning field.</strong> You can type a short justification (approximately 60 to 120 words) for your choice. It is optional in this practice. <strong>It will be mandatory in the assessed scenario</strong>, where the marker reads your reasoning &mdash; not your option label &mdash; to evaluate your business case. Practising the writing under time pressure now is the single most valuable preparation you can do for Assessment 3.</li>
         <li><strong>Every choice has consequences.</strong> There is no "correct" path. Each option exposes a different cost. The hardest decisions are the ones where you can defend any of the three options.</li>
         <li><strong>You will export your record.</strong> At the end of the scenario, you will download a Word document with your identification, your pasted claims, your three decisions, and the consequences you triggered. The exported document tells you exactly what to do with it.</li>
       </ol>
@@ -385,6 +393,12 @@
       <div class="decision-prompt-text">Three options. None is wrong. Each one costs in two dimensions at once. Which costs do you accept?</div>
     </div>
 
+    <div class="justify-section">
+      <div class="justify-label">Your reasoning <span class="optional-tag">(optional in the practice &mdash; mandatory in the assessed scenario)</span></div>
+      <textarea class="justify-textarea" id="justify-d1" placeholder="Type a short justification for your choice. The marker in the assessed scenario will read this to evaluate your business case reasoning &mdash; not the option label."></textarea>
+      <div class="justify-help">Aim for approximately 60 to 120 words. Reference your own claims above, name what makes the option you are about to pick the most defensible, and acknowledge the cost you are accepting. The most useful Assessment 3 preparation you can do is practise writing one of these under time pressure.</div>
+    </div>
+
     <div class="choices" id="d1-choices">
       <button class="choice-btn" onclick="choose(1,'A')">
         <div class="choice-number">Option A &mdash; Broaden the segment, soften the premium</div>
@@ -537,6 +551,12 @@
       <div class="decision-prompt-text">Three viable answers. The differences are about which costs you accept and which you defer.</div>
     </div>
 
+    <div class="justify-section">
+      <div class="justify-label">Your reasoning <span class="optional-tag">(optional in the practice &mdash; mandatory in the assessed scenario)</span></div>
+      <textarea class="justify-textarea" id="justify-d2" placeholder="Type a short justification for your choice. The marker in the assessed scenario will read this to evaluate your business case reasoning &mdash; not the option label."></textarea>
+      <div class="justify-help">Aim for approximately 60 to 120 words. Reference your scale claim above, name which head of the CFO&rsquo;s challenge your option addresses, and acknowledge what the other head costs you. Practising the writing under time pressure is the point.</div>
+    </div>
+
     <div class="choices" id="d2-choices">
       <button class="choice-btn" onclick="choose(2,'A')">
         <div class="choice-number">Option A &mdash; Defend the share number on differentiation grounds</div>
@@ -686,6 +706,12 @@
       <div class="decision-prompt-text">The hardest decision in the scenario. None of the three options is free. The General Counsel and the CEO will not be satisfied by the same choice.</div>
     </div>
 
+    <div class="justify-section">
+      <div class="justify-label">Your reasoning <span class="optional-tag">(optional in the practice &mdash; mandatory in the assessed scenario)</span></div>
+      <textarea class="justify-textarea" id="justify-d3" placeholder="Type a short justification for your choice. The marker in the assessed scenario will read this to evaluate your business case reasoning &mdash; not the option label."></textarea>
+      <div class="justify-help">Aim for approximately 60 to 120 words. Reference your key risk claim above, name which of the three constraints you are conceding (integrity, timing, or committee co-signability), and explain why the cost you are accepting is the one the case can absorb.</div>
+    </div>
+
     <div class="choices" id="d3-choices">
       <button class="choice-btn" onclick="choose(3,'A')">
         <div class="choice-number">Option A &mdash; Delay launch by two months to close the risk</div>
@@ -828,6 +854,7 @@
   var claims = { segment:'', scale:'', risk:'' };
   var choices = { 1:null, 2:null, 3:null };
   var consequences = { 1:null, 2:null, 3:null };
+  var justifications = { 1:'', 2:'', 3:'' };
   var timer = null;
   var timeLeft = 90;
 
@@ -961,6 +988,8 @@
 
   // ===== Choice handling =====
   function choose(d, opt) {
+    var ta = document.getElementById('justify-d' + d);
+    if (ta) justifications[d] = ta.value.trim();
     stopTimer();
     choices[d] = opt;
     consequences[d] = consequenceTitles[d + opt];
@@ -972,7 +1001,8 @@
     claims = { segment:'', scale:'', risk:'' };
     choices = { 1:null, 2:null, 3:null };
     consequences = { 1:null, 2:null, 3:null };
-    ['firstName','lastName','studentNumber','claimSegment','claimScale','claimRisk'].forEach(function(id){
+    justifications = { 1:'', 2:'', 3:'' };
+    ['firstName','lastName','studentNumber','claimSegment','claimScale','claimRisk','justify-d1','justify-d2','justify-d3'].forEach(function(id){
       var el = document.getElementById(id);
       if (el) el.value = '';
     });
@@ -1025,6 +1055,8 @@
   }
 
   function handleTimeout(d) {
+    var ta = document.getElementById('justify-d' + d);
+    if (ta) justifications[d] = ta.value.trim();
     choices[d] = 'T';
     consequences[d] = consequenceTitles[d + 'T'];
     var box = document.getElementById('d' + d + '-choices');
@@ -1127,6 +1159,7 @@
       + '<div class="decision-block">'
       + '<p><span class="label">The challenge:</span> The Head of Buying from a national grocery retailer argued that the segment defined in your claim accounts for fewer than 1.5 million households &mdash; below the 2-million threshold for national listing. He framed the trade as broaden, stay narrow with specialty launch, or stay narrow with a lengthened payback horizon.</p>'
       + '<p><span class="label">Your decision:</span> ' + escapeHtml(d1Label) + '</p>'
+      + '<p><span class="label">Your reasoning:</span> ' + formatJustification(justifications[1]) + '</p>'
       + '<p><span class="label">Consequence:</span> ' + escapeHtml(d1Cons) + '</p>'
       + '</div>'
 
@@ -1134,6 +1167,7 @@
       + '<div class="decision-block">'
       + '<p><span class="label">The challenge:</span> The CFO presented two pieces of analysis &mdash; the share take required against incumbents Unilever and P&amp;G versus the closest peer-launch benchmark of 0.3%, plus a credible competitor launch within six to eight months of yours. She tested whether your scale claim survives both heads of the challenge.</p>'
       + '<p><span class="label">Your decision:</span> ' + escapeHtml(d2Label) + '</p>'
+      + '<p><span class="label">Your reasoning:</span> ' + formatJustification(justifications[2]) + '</p>'
       + '<p><span class="label">Consequence:</span> ' + escapeHtml(d2Cons) + '</p>'
       + '</div>'
 
@@ -1141,6 +1175,7 @@
       + '<div class="decision-block">'
       + '<p><span class="label">The challenge:</span> The General Counsel surfaced the conflict between a disclosed risk on the return-generating claim and a launch window that closed two months before the mitigation could be completed. The CEO joined the meeting and wanted a clear recommendation before close of business. Three constraints &mdash; risk integrity, launch timing, and committee co-signability &mdash; could not all be satisfied.</p>'
       + '<p><span class="label">Your decision:</span> ' + escapeHtml(d3Label) + '</p>'
+      + '<p><span class="label">Your reasoning:</span> ' + formatJustification(justifications[3]) + '</p>'
       + '<p><span class="label">Consequence:</span> ' + escapeHtml(d3Cons) + '</p>'
       + '</div>'
 
@@ -1165,8 +1200,8 @@
       + '<p>Three things to do between now and the Friday of Week 12:</p>'
       + '<ol>'
       + '<li><strong>Sharpen your three claims using this scenario record.</strong> The consequences in Sections B, C, and D tell you exactly where each claim broke under pressure. Rewrite each one until it would survive the same challenge.</li>'
+      + '<li><strong>Practise the reasoning field.</strong> Run this practice scenario again and use the optional reasoning field on every decision. In the assessed scenario the field is mandatory and the marker reads it &mdash; not the option label &mdash; to evaluate your business case. Practising the writing under time pressure is the single most valuable Assessment 3 preparation you can do.</li>'
       + '<li><strong>Organise your Assessment 1 PIC and Assessment 2 portfolio</strong> into a single working folder with clear filenames. The assessed scenario will ask you to paste extracts from these documents under time pressure &mdash; you cannot afford to be searching for them when the timer is running.</li>'
-      + '<li><strong>Run this practice scenario at least once more</strong> with the same claims, after sharpening them. Notice whether the sharpened claims survive the challenges better than the original drafts did. The improvement &mdash; or the absence of improvement &mdash; tells you whether the rewrite has done its work.</li>'
       + '</ol>'
 
       + '<div class="footer">&copy; RMIT University 2026 &middot; MKTG1092 Product Innovation and Management &middot; Week 11 Practice Scenario &middot; Not assessed</div>'
@@ -1187,6 +1222,13 @@
   function escapeHtml(s) {
     if (!s) return '';
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,'<br>');
+  }
+
+  function formatJustification(s) {
+    if (!s || !s.trim()) {
+      return '<em style="color:#a8551a;">(no reasoning provided &mdash; this is optional in the practice scenario, but in the assessed scenario this field is mandatory and is what the marker reads to evaluate your business case reasoning)</em>';
+    }
+    return escapeHtml(s);
   }
 </script>
 </body>
