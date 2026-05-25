@@ -25,12 +25,6 @@
   .masthead-right { display:flex; align-items:center; gap:14px; }
   .masthead-badge { background:rgba(255,255,255,0.2); color:#fff; font-size:10px; padding:3px 10px; border-radius:20px; font-weight:600; letter-spacing:0.06em; }
 
-  .timer-display { background:rgba(255,255,255,0.15); color:#fff; font-size:14px; font-weight:700; padding:6px 14px; border-radius:20px; font-variant-numeric:tabular-nums; letter-spacing:0.04em; display:none; align-items:center; gap:8px; }
-  .timer-display.active { display:flex; }
-  .timer-display.warning { background:var(--warn-border); }
-  .timer-display.critical { background:var(--red); animation:pulseTimer 0.8s ease-in-out infinite; }
-  @keyframes pulseTimer { 0%,100%{opacity:1} 50%{opacity:0.7} }
-
   .container { max-width:760px; margin:0 auto; padding:36px 40px 80px; }
 
   .practice-banner { background:var(--purple); color:#fff; border-radius:10px; padding:16px 22px; margin-bottom:28px; display:flex; align-items:flex-start; gap:14px; }
@@ -84,8 +78,6 @@
 
   .consequence { background:#fff; border:1px solid var(--border); border-top:3px solid var(--purple); border-radius:0 0 8px 8px; padding:16px 20px; margin:18px 0; }
   .consequence-label { font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple); margin-bottom:8px; }
-  .consequence.timeout { border-top-color:var(--red); }
-  .consequence.timeout .consequence-label { color:var(--red); }
 
   .pattern-note { background:var(--gold-bg); border-left:4px solid var(--gold-border); border-radius:0 8px 8px 0; padding:12px 16px; margin:16px 0; font-size:12.5px; color:var(--ink-mid); }
   .pattern-note strong { color:var(--gold-ink); }
@@ -167,7 +159,6 @@
 <div class="masthead">
   <span class="masthead-title">MKTG1092 &nbsp;&middot;&nbsp; Week 11 &nbsp;&middot;&nbsp; Practice Scenario</span>
   <div class="masthead-right">
-    <div class="timer-display" id="timer-display"><span>&#9201;</span><span id="timer-value">1:30</span></div>
     <span class="masthead-badge">Practice only &mdash; not assessed</span>
   </div>
 </div>
@@ -188,7 +179,7 @@
     <div class="welcome-hero">
       <div class="welcome-logo">&#9670;</div>
       <h1 class="welcome-title">The Investment Committee</h1>
-      <p class="welcome-sub">A practice branching scenario &nbsp;&middot;&nbsp; Three decisions &nbsp;&middot;&nbsp; Ninety seconds each</p>
+      <p class="welcome-sub">A practice branching scenario &nbsp;&middot;&nbsp; Three decisions &nbsp;&middot;&nbsp; Work at your own pace</p>
     </div>
 
     <p class="body-text">You are a Product Innovation Manager presenting to an Investment Committee that will decide whether to fund your concept. Across three decision points you will defend the three claims of your business case under pressure &mdash; your target segment claim, your scale claim, and your key risk claim. Each decision arrives with a senior stakeholder pushing back on your reasoning. None of the options is obviously right. Every option costs something concrete.</p>
@@ -198,7 +189,7 @@
       <ol>
         <li><strong>You will identify yourself.</strong> First name, last name, and student number are required. The Assessment 3 scenario will ask for the same information. We are practising the discipline of always identifying your work.</li>
         <li><strong>You will paste your three claims.</strong> Before the scenario begins, you must paste in the three claims you drafted in Tutorial 11.3 &mdash; segment, scale, and key risk. The scenario uses your own claims as the source material. You cannot proceed without all three.</li>
-        <li><strong>Three decision points, ninety seconds each.</strong> A countdown timer runs at the top of the screen. When time runs out, the committee makes the decision for you &mdash; and you see what that costs. The assessed scenario uses the same timer.</li>
+        <li><strong>Three decision points.</strong> Work through each one at your own pace. This practice version is deliberately untimed so you can focus on the reasoning. The assessed scenario in Week 12 uses the same decision format.</li>
         <li><strong>Each decision has an optional reasoning field.</strong> You can type a short justification (approximately 60 to 120 words) for your choice. It is optional in this practice. <strong>It will be mandatory in the assessed scenario</strong>, where the marker reads your reasoning &mdash; not your option label &mdash; to evaluate your business case. Practising the writing under time pressure now is the single most valuable preparation you can do for Assessment 3.</li>
         <li><strong>Every choice has consequences.</strong> There is no "correct" path. Each option exposes a different cost. The hardest decisions are the ones where you can defend any of the three options.</li>
         <li><strong>You will export your record.</strong> At the end of the scenario, you will download a Word document with your identification, your pasted claims, your three decisions, and the consequences you triggered. The exported document tells you exactly what to do with it.</li>
@@ -355,7 +346,7 @@
 
     <div class="callout">
       <div class="callout-title">Head of Buying &mdash; verbatim</div>
-      <p class="callout-quote">"I have read your segment claim. It is sharp. I respect the discipline. But by my reading of your own evidence, the household type you have defined accounts for under one and a half million homes nationally. We do not list new products for under two million addressable households on national shelves &mdash; the slot economics do not work for us, and they will not work for you either. So you have three places to break this. You can broaden the segment, which dilutes the tension your premium pricing depends on. You can stay narrow and accept a specialty-channel-first launch, which removes the volume that recovers your tooling investment inside the original payback horizon. Or you can stay narrow on the segment, accept national distribution at a more modest shelf position, and lengthen your payback horizon to twenty-eight or thirty months instead of twenty-four. Each costs you something different. Take ninety seconds. The committee needs to see how you reason through this &mdash; not just what you choose."</p>
+      <p class="callout-quote">"I have read your segment claim. It is sharp. I respect the discipline. But by my reading of your own evidence, the household type you have defined accounts for under one and a half million homes nationally. We do not list new products for under two million addressable households on national shelves &mdash; the slot economics do not work for us, and they will not work for you either. So you have three places to break this. You can broaden the segment, which dilutes the tension your premium pricing depends on. You can stay narrow and accept a specialty-channel-first launch, which removes the volume that recovers your tooling investment inside the original payback horizon. Or you can stay narrow on the segment, accept national distribution at a more modest shelf position, and lengthen your payback horizon to twenty-eight or thirty months instead of twenty-four. Each costs you something different. Take a moment. The committee needs to see how you reason through this &mdash; not just what you choose."</p>
     </div>
 
     <div class="numbers-box">
@@ -389,7 +380,7 @@
     </div>
 
     <div class="decision-prompt">
-      <div class="decision-prompt-label">Your decision &mdash; 90 seconds</div>
+      <div class="decision-prompt-label">Your decision</div>
       <div class="decision-prompt-text">Three options. None is wrong. Each one costs in two dimensions at once. Which costs do you accept?</div>
     </div>
 
@@ -464,20 +455,6 @@
     <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
   </div>
 
-  <div class="passage" id="p-d1-timeout">
-    <div class="doc-header">
-      <div class="doc-label">Time elapsed &nbsp;&middot;&nbsp; Decision 1</div>
-      <h2 class="doc-title">The Committee Filled the Silence</h2>
-    </div>
-    <div class="consequence timeout">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">Ninety seconds passed. You did not commit. The Head of Buying glanced at the chair. The chair filled the silence: "Let us return to this question after the next agenda item." It is the most polite way of saying that your segment claim is now registered as a question you could not defend in the room. The committee will return to it. But with less weight on your answer than if you had given one now.</p>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);margin-top:10px;">In Assessment 3, a timeout is not a neutral outcome. The scenario records that you did not commit, and the next decision arrives with the previous question still unresolved.</p>
-    </div>
-    <div class="pattern-note"><strong>What this reveals about your reasoning:</strong> under time pressure you preferred no commitment to a costly one. This is a defensible instinct in some commercial contexts. In an investment committee, it usually is not.</div>
-    <button class="btn-primary" onclick="goTo('p-d2')" style="margin-top:16px;">Continue to Decision 2 &rarr;</button>
-  </div>
-
   <!-- ══════════════════════════════════ DECISION 2 — SCALE CLAIM -->
   <div class="passage" id="p-d2">
 
@@ -547,7 +524,7 @@
     </div>
 
     <div class="decision-prompt">
-      <div class="decision-prompt-label">Your decision &mdash; 90 seconds</div>
+      <div class="decision-prompt-label">Your decision</div>
       <div class="decision-prompt-text">Three viable answers. The differences are about which costs you accept and which you defer.</div>
     </div>
 
@@ -620,19 +597,6 @@
     <button class="btn-primary" onclick="goTo('p-d3')" style="margin-top:16px;">Continue to Decision 3 &rarr;</button>
   </div>
 
-  <div class="passage" id="p-d2-timeout">
-    <div class="doc-header">
-      <div class="doc-label">Time elapsed &nbsp;&middot;&nbsp; Decision 2</div>
-      <h2 class="doc-title">A Number Without a Defence</h2>
-    </div>
-    <div class="consequence timeout">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">The 90 seconds elapsed in silence. The CFO leaves the Euromonitor printout on the table and turns to the chair: "We can come back to it." The committee moves on. Your scale claim is now in the room as an unanswered question. Decision 3 arrives with two open questions sitting behind it. This is what compounding under-preparation looks like.</p>
-    </div>
-    <div class="pattern-note"><strong>What this reveals about your reasoning:</strong> two timeouts in a row indicate the under-pressure default is to wait rather than commit. Useful information to bring into Assessment 3.</div>
-    <button class="btn-primary" onclick="goTo('p-d3')" style="margin-top:16px;">Continue to Decision 3 &rarr;</button>
-  </div>
-
   <!-- ══════════════════════════════════ DECISION 3 — KEY RISK CLAIM -->
   <div class="passage" id="p-d3">
 
@@ -668,7 +632,7 @@
 
     <div class="callout">
       <div class="callout-title">General Counsel &mdash; verbatim</div>
-      <p class="callout-quote">"I will be direct. Your risk register names a specific risk to the return on this investment. By naming it in the register, you have put this committee on formal notice. So I cannot co-sign a paper where the source of return depends on something you have just told us in writing carries this exposure. The CEO has asked me to be uncomfortable about this. I am. What do you propose &mdash; today &mdash; that resolves the conflict between your risk claim and your investment thesis? Whatever you say, I will be minuting. Take ninety seconds."</p>
+      <p class="callout-quote">"I will be direct. Your risk register names a specific risk to the return on this investment. By naming it in the register, you have put this committee on formal notice. So I cannot co-sign a paper where the source of return depends on something you have just told us in writing carries this exposure. The CEO has asked me to be uncomfortable about this. I am. What do you propose &mdash; today &mdash; that resolves the conflict between your risk claim and your investment thesis? Whatever you say, I will be minuting."</p>
     </div>
 
     <div class="numbers-box">
@@ -702,7 +666,7 @@
     </div>
 
     <div class="decision-prompt">
-      <div class="decision-prompt-label">Your decision &mdash; 90 seconds</div>
+      <div class="decision-prompt-label">Your decision</div>
       <div class="decision-prompt-text">The hardest decision in the scenario. None of the three options is free. The General Counsel and the CEO will not be satisfied by the same choice.</div>
     </div>
 
@@ -775,19 +739,6 @@
     <button class="btn-primary" onclick="finishScenario()" style="margin-top:16px;">Continue to your reflection and export &rarr;</button>
   </div>
 
-  <div class="passage" id="p-d3-timeout">
-    <div class="doc-header">
-      <div class="doc-label">Time elapsed &nbsp;&middot;&nbsp; Decision 3</div>
-      <h2 class="doc-title">The Committee Decided Without You</h2>
-    </div>
-    <div class="consequence timeout">
-      <div class="consequence-label">What happens next</div>
-      <p style="font-size:14px;line-height:1.7;color:var(--ink-mid);">Ninety seconds elapsed. You had no answer. The General Counsel turned to the chair: "Without a clear position from the proposer, I cannot co-sign the risk register as it stands. I recommend the committee defer." The chair defers. Two weeks later you bring a return paper. The decision is taken in a smaller room, by people who were not in the original meeting, with less context. The outcome is reasonable. The cost is that the decision was no longer yours to shape.</p>
-    </div>
-    <div class="pattern-note"><strong>What this reveals about your reasoning:</strong> the third timeout indicates a deep aversion to commitment under uncertainty. This is the most diagnostic of all the timeouts &mdash; the pattern is consistent across all three claims.</div>
-    <button class="btn-primary" onclick="finishScenario()" style="margin-top:16px;">Continue to your reflection and export &rarr;</button>
-  </div>
-
   <!-- ══════════════════════════════════ FINAL -->
   <div class="passage" id="p-final">
 
@@ -825,7 +776,7 @@
       <ol style="font-size:14px;line-height:1.9;color:var(--ink-mid);padding-left:16px;margin-top:8px;">
         <li style="margin-bottom:10px;"><strong>Which decision did you find hardest?</strong> The hardest decision usually surfaces the weakest of your three claims in your own thinking. Open your Tutorial 11.3 draft tomorrow and ask whether that claim is weak because the evidence is weak, or because the translation move from Topic 11.1 has not yet been done on it.</li>
         <li style="margin-bottom:10px;"><strong>What pattern did your three choices form?</strong> Were you mostly defending claims (option A patterns), mostly revising under pressure (B patterns), or mostly reframing the question (C patterns)? None of these is wrong. The pattern is information about how you read evidence under commercial pressure.</li>
-        <li style="margin-bottom:0;"><strong>Where did you feel the time pressure most?</strong> The 90-second timer compresses what would normally be a ten-minute deliberation. In the assessed scenario the timer is the same. Notice whether you defaulted to the option you understood fastest or the option you believed in most. These are not always the same option.</li>
+        <li style="margin-bottom:0;"><strong>Which option did you reach for first?</strong> Before you read all three options in full, one of them probably felt like the obvious choice. Notice whether you ended up choosing that first instinct or talked yourself into a different option. The gap between your instinct and your final choice is diagnostic of how you weigh evidence.</li>
       </ol>
     </div>
 
@@ -837,7 +788,7 @@
 
     <div style="background:var(--cream-dark);border-radius:8px;padding:16px 22px;margin-top:18px;">
       <p style="font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink);">Coming in Week 12 &mdash; the assessed scenario</p>
-      <p style="font-size:13px;line-height:1.6;color:var(--ink-mid);">The Assessment 3 brief releases at six o&rsquo;clock on the Friday of Week 12. The assessed scenario will use the same format you have just practised &mdash; identification, paste your work, three decisions, 90-second timer, export. But it will draw on your full Assessment 1 and 2 portfolio, not only your three claims from Week 11. Have your Product Innovation Charter, your concept description, your four lab arguments, and your three claims all open before you begin. Underpreparation in that scenario costs marks.</p>
+      <p style="font-size:13px;line-height:1.6;color:var(--ink-mid);">The Assessment 3 brief releases at six o&rsquo;clock on the Friday of Week 12. The assessed scenario will use the same decision format you have just practised &mdash; identification, paste your work, three decisions, export. But it will draw on your full Assessment 1 and 2 portfolio, not only your three claims from Week 11. Have your Product Innovation Charter, your concept description, your four lab arguments, and your three claims all open before you begin. Underpreparation in that scenario costs marks.</p>
     </div>
 
     <div style="text-align:center;margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
@@ -855,50 +806,39 @@
   var choices = { 1:null, 2:null, 3:null };
   var consequences = { 1:null, 2:null, 3:null };
   var justifications = { 1:'', 2:'', 3:'' };
-  var timer = null;
-  var timeLeft = 90;
 
   var choiceLabels = {
     '1A':'Option A — Broaden the segment, soften the premium',
     '1B':'Option B — Stay narrow, accept specialty-first launch',
     '1C':'Option C — Stay narrow, lengthen the payback horizon',
-    '1T':'Timed out — committee deferred the segment question',
     '2A':'Option A — Defend the share number on differentiation grounds',
     '2B':'Option B — Revise the share claim down and accelerate launch',
     '2C':'Option C — Reframe the share against a tighter subsegment',
-    '2T':'Timed out — scale claim left as an open question',
     '3A':'Option A — Delay launch by two months to close the risk',
     '3B':'Option B — Launch on time with a narrower claim',
-    '3C':'Option C — Launch on time, original claim, audit in parallel',
-    '3T':'Timed out — committee deferred the risk decision'
+    '3C':'Option C — Launch on time, original claim, audit in parallel'
   };
 
   var consequenceTitles = {
     '1A':'A Wider Segment, A Softer Claim',
     '1B':'A Specialty-First Defence',
     '1C':'A Longer Horizon',
-    '1T':'The Committee Filled the Silence',
     '2A':'Differentiation Versus Evidence',
     '2B':'A Smaller Number, A Tighter Window',
     '2C':'A Sharper Denominator',
-    '2T':'A Number Without a Defence',
     '3A':'Defensible But Second',
     '3B':'A Softer Claim, A Cleaner Launch',
-    '3C':'A Window of Exposure',
-    '3T':'The Committee Decided Without You'
+    '3C':'A Window of Exposure'
   };
 
   // ===== Navigation =====
   function goTo(id) {
-    stopTimer();
     document.querySelectorAll('.passage').forEach(function(p){ p.classList.remove('active'); });
     var t = document.getElementById(id);
     if (t) {
       t.classList.add('active');
       window.scrollTo({top:0,behavior:'smooth'});
-      if (id === 'p-d1') { populateReferencePanels(); startTimer(1); }
-      else if (id === 'p-d2') { populateReferencePanels(); startTimer(2); }
-      else if (id === 'p-d3') { populateReferencePanels(); startTimer(3); }
+      if (id === 'p-d1' || id === 'p-d2' || id === 'p-d3') { populateReferencePanels(); }
     }
   }
 
@@ -990,7 +930,6 @@
   function choose(d, opt) {
     var ta = document.getElementById('justify-d' + d);
     if (ta) justifications[d] = ta.value.trim();
-    stopTimer();
     choices[d] = opt;
     consequences[d] = consequenceTitles[d + opt];
     goTo('p-d' + d + opt.toLowerCase());
@@ -1018,50 +957,6 @@
     document.getElementById('record-d2').textContent = choices[2] ? choiceLabels['2' + choices[2]] : 'Not recorded';
     document.getElementById('record-d3').textContent = choices[3] ? choiceLabels['3' + choices[3]] : 'Not recorded';
     goTo('p-final');
-  }
-
-  // ===== Timer =====
-  function startTimer(decisionNum) {
-    stopTimer();
-    timeLeft = 90;
-    var display = document.getElementById('timer-display');
-    display.classList.add('active');
-    display.classList.remove('warning','critical');
-    updateTimerDisplay();
-    timer = setInterval(function(){
-      timeLeft--;
-      updateTimerDisplay();
-      if (timeLeft <= 30 && timeLeft > 10) display.classList.add('warning');
-      if (timeLeft <= 10) { display.classList.remove('warning'); display.classList.add('critical'); }
-      if (timeLeft <= 0) {
-        stopTimer();
-        handleTimeout(decisionNum);
-      }
-    }, 1000);
-  }
-
-  function stopTimer() {
-    if (timer) { clearInterval(timer); timer = null; }
-    var display = document.getElementById('timer-display');
-    if (display) { display.classList.remove('active','warning','critical'); }
-  }
-
-  function updateTimerDisplay() {
-    var mins = Math.floor(timeLeft / 60);
-    var secs = timeLeft % 60;
-    var formatted = mins + ':' + (secs < 10 ? '0' : '') + secs;
-    var val = document.getElementById('timer-value');
-    if (val) val.textContent = formatted;
-  }
-
-  function handleTimeout(d) {
-    var ta = document.getElementById('justify-d' + d);
-    if (ta) justifications[d] = ta.value.trim();
-    choices[d] = 'T';
-    consequences[d] = consequenceTitles[d + 'T'];
-    var box = document.getElementById('d' + d + '-choices');
-    if (box) box.querySelectorAll('button').forEach(function(b){ b.disabled = true; });
-    goTo('p-d' + d + '-timeout');
   }
 
   // ===== Word Export =====
@@ -1185,14 +1080,14 @@
       + '<ol>'
       + '<li><strong>Which decision did you find hardest, and why?</strong> The hardest decision usually surfaces the weakest of your three claims. Open the claim above that corresponds to the hardest decision and ask whether it is weak because the evidence is weak, or because the translation move from Topic 11.1 has not yet been done on it. Rewrite the claim accordingly.</li>'
       + '<li><strong>What pattern did your three choices form?</strong> Were you mostly defending claims, mostly revising under pressure, or mostly reframing the question? None of these is wrong. The pattern is information about how you read evidence under commercial pressure &mdash; useful information to bring into the Investment Recommendation section of your Assessment 3 report.</li>'
-      + '<li><strong>Where did you feel the time pressure most?</strong> The 90-second timer compresses what would normally be a ten-minute deliberation. In the assessed scenario the timer is the same. Notice whether you defaulted to the option you understood fastest or the option you believed in most.</li>'
+      + '<li><strong>Which option did you reach for first?</strong> Before you read all three options in full, one of them probably felt like the obvious choice. Notice whether you ended up choosing that first instinct or talked yourself into a different option. The gap between your instinct and your final choice is diagnostic of how you weigh evidence under commercial pressure.</li>'
       + '</ol>'
 
       // ============ NEXT STEPS ============
       + '<h2>Section F &mdash; Next steps before Assessment 3 opens</h2>'
       + '<div class="warning-block">'
       + '<strong>The assessed scenario is different from this practice</strong>'
-      + '<p>The Assessment 3 scenario releases at six o&rsquo;clock on the Friday of Week 12. It uses the same format you have just practised &mdash; identification, paste your own work, three decisions, 90-second timer, Word export. But it differs from this practice in two important ways.</p>'
+      + '<p>The Assessment 3 scenario releases at six o&rsquo;clock on the Friday of Week 12. It uses the same decision format you have just practised &mdash; identification, paste your own work, three decisions, Word export. But it differs from this practice in two important ways.</p>'
       + '<p><strong>It draws on your full Assessment 1 and Assessment 2 portfolio, not only your three claims from Week 11.</strong> You will need your Product Innovation Charter, your developed concept description, your four lab arguments, and your three claims all open before you begin. A student who only prepares Week 11 materials will be underprepared.</p>'
       + '<p><strong>The exported document from the assessed scenario must be included as Appendix E in your final report submission</strong> (see the appendix instruction earlier in this document).</p>'
       + '</div>'
@@ -1201,7 +1096,7 @@
       + '<ol>'
       + '<li><strong>Sharpen your three claims using this scenario record.</strong> The consequences in Sections B, C, and D tell you exactly where each claim broke under pressure. Rewrite each one until it would survive the same challenge.</li>'
       + '<li><strong>Practise the reasoning field.</strong> Run this practice scenario again and use the optional reasoning field on every decision. In the assessed scenario the field is mandatory and the marker reads it &mdash; not the option label &mdash; to evaluate your business case. Practising the writing under time pressure is the single most valuable Assessment 3 preparation you can do.</li>'
-      + '<li><strong>Organise your Assessment 1 PIC and Assessment 2 portfolio</strong> into a single working folder with clear filenames. The assessed scenario will ask you to paste extracts from these documents under time pressure &mdash; you cannot afford to be searching for them when the timer is running.</li>'
+      + '<li><strong>Organise your Assessment 1 PIC and Assessment 2 portfolio</strong> into a single working folder with clear filenames. The assessed scenario will ask you to paste extracts from these documents \u2014 you do not want to be searching for them mid-scenario.</li>'
       + '</ol>'
 
       + '<div class="footer">&copy; RMIT University 2026 &middot; MKTG1092 Product Innovation and Management &middot; Week 11 Practice Scenario &middot; Not assessed</div>'
